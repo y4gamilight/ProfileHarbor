@@ -20,6 +20,13 @@
 		9FE88A482B5146F30046250A /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE88A472B5146F30046250A /* Dependencies.swift */; };
 		9FE88A4A2B5147080046250A /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE88A492B5147080046250A /* AppCoordinator.swift */; };
 		9FE88A4E2B5148840046250A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FE88A4D2B5148840046250A /* Localizable.strings */; };
+		9FE88A522B515C380046250A /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE88A512B515C380046250A /* DatabaseManager.swift */; };
+		9FE88A552B515D230046250A /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE88A542B515D230046250A /* Request.swift */; };
+		9FE88A582B515D2E0046250A /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE88A572B515D2E0046250A /* Response.swift */; };
+		9FE88A5B2B515DA40046250A /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE88A5A2B515DA40046250A /* APIClient.swift */; };
+		9FE88A5D2B515DC10046250A /* APIEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE88A5C2B515DC10046250A /* APIEnvironment.swift */; };
+		9FE88A5F2B5169500046250A /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE88A5E2B5169500046250A /* APIError.swift */; };
+		9FE88A612B5171600046250A /* StringKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE88A602B5171600046250A /* StringKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +64,13 @@
 		9FE88A472B5146F30046250A /* Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
 		9FE88A492B5147080046250A /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		9FE88A4D2B5148840046250A /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		9FE88A512B515C380046250A /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		9FE88A542B515D230046250A /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		9FE88A572B515D2E0046250A /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		9FE88A5A2B515DA40046250A /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		9FE88A5C2B515DC10046250A /* APIEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEnvironment.swift; sourceTree = "<group>"; };
+		9FE88A5E2B5169500046250A /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		9FE88A602B5171600046250A /* StringKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +128,6 @@
 				9FE88A432B51459D0046250A /* Entities */,
 				9FE88A422B5145980046250A /* Domains */,
 				9FE88A122B5142B40046250A /* ViewController.swift */,
-				9FE88A172B5142B40046250A /* ProfileHarbor.xcdatamodeld */,
 			);
 			path = ProfileHarbor;
 			sourceTree = "<group>";
@@ -158,6 +171,8 @@
 		9FE88A432B51459D0046250A /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				9FE88A502B515A680046250A /* Database */,
+				9FE88A4F2B515A630046250A /* API */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -199,8 +214,54 @@
 			isa = PBXGroup;
 			children = (
 				9FE88A4D2B5148840046250A /* Localizable.strings */,
+				9FE88A602B5171600046250A /* StringKey.swift */,
 			);
 			path = Localizations;
+			sourceTree = "<group>";
+		};
+		9FE88A4F2B515A630046250A /* API */ = {
+			isa = PBXGroup;
+			children = (
+				9FE88A592B515D6E0046250A /* Base */,
+				9FE88A562B515D260046250A /* Response */,
+				9FE88A532B515D0D0046250A /* Request */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		9FE88A502B515A680046250A /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				9FE88A172B5142B40046250A /* ProfileHarbor.xcdatamodeld */,
+				9FE88A512B515C380046250A /* DatabaseManager.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		9FE88A532B515D0D0046250A /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				9FE88A542B515D230046250A /* Request.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		9FE88A562B515D260046250A /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				9FE88A572B515D2E0046250A /* Response.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		9FE88A592B515D6E0046250A /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				9FE88A5A2B515DA40046250A /* APIClient.swift */,
+				9FE88A5C2B515DC10046250A /* APIEnvironment.swift */,
+				9FE88A5E2B5169500046250A /* APIError.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,12 +396,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FE88A612B5171600046250A /* StringKey.swift in Sources */,
 				9FE88A4A2B5147080046250A /* AppCoordinator.swift in Sources */,
+				9FE88A552B515D230046250A /* Request.swift in Sources */,
 				9FE88A132B5142B40046250A /* ViewController.swift in Sources */,
+				9FE88A5B2B515DA40046250A /* APIClient.swift in Sources */,
 				9FE88A192B5142B40046250A /* ProfileHarbor.xcdatamodeld in Sources */,
+				9FE88A5F2B5169500046250A /* APIError.swift in Sources */,
+				9FE88A582B515D2E0046250A /* Response.swift in Sources */,
 				9FE88A0F2B5142B40046250A /* AppDelegate.swift in Sources */,
+				9FE88A5D2B515DC10046250A /* APIEnvironment.swift in Sources */,
 				9FE88A482B5146F30046250A /* Dependencies.swift in Sources */,
 				9FE88A112B5142B40046250A /* SceneDelegate.swift in Sources */,
+				9FE88A522B515C380046250A /* DatabaseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
