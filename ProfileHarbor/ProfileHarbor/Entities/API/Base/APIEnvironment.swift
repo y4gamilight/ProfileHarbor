@@ -16,7 +16,7 @@ enum APIEnvironment {
     }
     
     var headerDefault: [String: String] {
-        return ["Authorization": "Bearer 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",
+        return ["Authorization": "Bearer <YOUR_TOKEN>",
                 "X-GitHub-Api-Version": "2022-11-28",
                 "accept": "application/vnd.github+json"]
     }
