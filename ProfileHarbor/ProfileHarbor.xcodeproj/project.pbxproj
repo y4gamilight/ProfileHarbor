@@ -12,6 +12,8 @@
 		9F61F4B62B522A08005F7809 /* MockUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F61F4B52B522A08005F7809 /* MockUserService.swift */; };
 		9F77460F2B520AA500289326 /* IUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F77460E2B520AA500289326 /* IUserService.swift */; };
 		9F7746112B520AAD00289326 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7746102B520AAD00289326 /* UserService.swift */; };
+		9FA99DCC2B52FDCF00CDE7E8 /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 9FA99DCB2B52FDCF00CDE7E8 /* ProgressHUD */; };
+		9FA99DCF2B52FF0800CDE7E8 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 9FA99DCE2B52FF0800CDE7E8 /* Toast */; };
 		9FE88A0F2B5142B40046250A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE88A0E2B5142B40046250A /* AppDelegate.swift */; };
 		9FE88A112B5142B40046250A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE88A102B5142B40046250A /* SceneDelegate.swift */; };
 		9FE88A132B5142B40046250A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE88A122B5142B40046250A /* ViewController.swift */; };
@@ -92,6 +94,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FA99DCF2B52FF0800CDE7E8 /* Toast in Frameworks */,
+				9FA99DCC2B52FDCF00CDE7E8 /* ProgressHUD in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +393,10 @@
 			dependencies = (
 			);
 			name = ProfileHarbor;
+			packageProductDependencies = (
+				9FA99DCB2B52FDCF00CDE7E8 /* ProgressHUD */,
+				9FA99DCE2B52FF0800CDE7E8 /* Toast */,
+			);
 			productName = ProfileHarbor;
 			productReference = 9FE88A0B2B5142B40046250A /* ProfileHarbor.app */;
 			productType = "com.apple.product-type.application";
@@ -461,6 +469,10 @@
 				Base,
 			);
 			mainGroup = 9FE88A022B5142B40046250A;
+			packageReferences = (
+				9FA99DCA2B52FDCF00CDE7E8 /* XCRemoteSwiftPackageReference "ProgressHUD" */,
+				9FA99DCD2B52FF0800CDE7E8 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+			);
 			productRefGroup = 9FE88A0C2B5142B40046250A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -867,6 +879,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9FA99DCA2B52FDCF00CDE7E8 /* XCRemoteSwiftPackageReference "ProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/relatedcode/ProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 14.1.0;
+			};
+		};
+		9FA99DCD2B52FF0800CDE7E8 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9FA99DCB2B52FDCF00CDE7E8 /* ProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9FA99DCA2B52FDCF00CDE7E8 /* XCRemoteSwiftPackageReference "ProgressHUD" */;
+			productName = ProgressHUD;
+		};
+		9FA99DCE2B52FF0800CDE7E8 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9FA99DCD2B52FF0800CDE7E8 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		9FE88A172B5142B40046250A /* ProfileHarbor.xcdatamodeld */ = {
