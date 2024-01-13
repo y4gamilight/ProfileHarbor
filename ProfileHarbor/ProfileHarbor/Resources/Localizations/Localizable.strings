@@ -7,3 +7,4 @@
 */
 "app_name" = "Profile Harbor";
 "text_ok" = "OK";
+"text_cancel" = "Cancel";

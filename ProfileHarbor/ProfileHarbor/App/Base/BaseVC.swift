@@ -42,8 +42,8 @@ class BaseVC<ViewModel: BaseVM>: UIViewController {
     func configuration() {}
     
     func showErorMessage(_ msg: String) {
-        let alertVC = UIAlertController(title: StringLocale.shared.kAppName, message: msg, preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title:  StringLocale.shared.cancel, style: .cancel))
+        let alertVC = UIAlertController(title: StringKey.appName, message: msg, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title:  StringKey.textCancel, style: .cancel))
         self.present(alertVC, animated: true)
     }
 }

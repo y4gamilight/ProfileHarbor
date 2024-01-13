@@ -9,10 +9,15 @@ import Foundation
 import Combine
 
 final class ListUserVM: BaseVM {
-    var fetchedError = PassthroughSubject<String, Never>()
     
+    typealias C = AppCoordinator
+    var coordinator: AppCoordinator!
+    
+    var fetchedError = PassthroughSubject<String, Never>()
+    private var reloadListSubject = PassthroughSubject<[UserViewModel], Never>()
     func transform(input: Input) -> Output {
-        return Output()
+        return Output(reloadList: reloadListSubject.eraseToAnyPublisher(),
+                      showError: fetchedError.eraseToAnyPublisher())
     }
     
     private let userSerivce: IUserService
@@ -24,11 +29,11 @@ final class ListUserVM: BaseVM {
 
 extension ListUserVM {
     struct Input {
-        private let getUsers: AnyPublisher<Void, Never>
+        let getUsers: AnyPublisher<Void, Never>
     }
     
     struct Output {
-        let reloadList: AnyPublisher<Void, Never>
+        let reloadList: AnyPublisher<[UserViewModel], Never>
         let showError: AnyPublisher<String, Never>
     }
 }
