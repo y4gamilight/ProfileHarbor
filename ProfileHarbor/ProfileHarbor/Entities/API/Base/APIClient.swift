@@ -15,19 +15,14 @@ struct APIClient {
         self.env = env
         self.urlSession = urlSession
     }
-    
-    /// Dispatches a Request and returns a publisher
-    /// - Parameter request: Request to Dispatch
-    /// - Returns: A publisher containing decoded data or an error
-    func request<R: Request>(_ request: R) -> AnyPublisher<R.Reps, APIError> {
+    private func performRequest<R: Request>(_ request: R) -> AnyPublisher<Data, Error> {
         guard let urlRequest = request.asURLRequest(baseURL: env.baseURL, headerDefault: env.headerDefault) else {
-            return Fail(outputType: R.Reps.self, failure: APIError.badRequest).eraseToAnyPublisher()
+            return Fail(outputType: Data.self, failure: APIError.badRequest).eraseToAnyPublisher()
         }
+
         return urlSession
             .dataTaskPublisher(for: urlRequest)
-        // Map on Request response
-            .tryMap({ data, response in
-                // If the response is invalid, throw an error
+            .tryMap { data, response in
                 guard let response = response as? HTTPURLResponse else {
                     throw APIError.unknownError
                 }
@@ -35,15 +30,27 @@ struct APIClient {
                     throw APIError(statusCode: response.statusCode)
                 }
                 return data
-            })
-        // Decode data using our ReturnType
+            }
+            .eraseToAnyPublisher()
+    }
+
+    func request<R: Request>(_ request: R) -> AnyPublisher<R.Reps, APIError> {
+        return performRequest(request)
             .decode(type: R.Reps.self, decoder: JSONDecoder())
-        // Handle any decoding errors
-            .mapError { error in
-                return self.handleError(error)
+            .mapError { error -> APIError in
+                self.handleError(error)
             }
             .print()
-        // And finally, expose our publisher
+            .eraseToAnyPublisher()
+    }
+
+    func requestCollection<R: Request>(_ request: R) -> AnyPublisher<[R.Reps], APIError> {
+        return performRequest(request)
+            .decode(type: [R.Reps].self, decoder: JSONDecoder())
+            .mapError { error -> APIError in
+                self.handleError(error)
+            }
+            .print()
             .eraseToAnyPublisher()
     }
 }

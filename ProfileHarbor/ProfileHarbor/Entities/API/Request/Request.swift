@@ -19,13 +19,13 @@ public protocol Request {
     associatedtype Reps: Response
     var path: String { get }
     var method: HTTPMethod { get }
-    var contentType: String { get }
     var body: [String: Any]? { get }
     var queryParam: [String: Any]? { get }
     var headers: [String: String]? { get }
 }
 
 extension Request {
+    
     private var queryPathString: String? {
         get {
             guard let queryParam = self.queryParam, queryParam.count > 0 else { return nil }
