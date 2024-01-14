@@ -6,3 +6,17 @@
 //
 
 import Foundation
+
+class Dependencies {
+    static let shared = Dependencies()
+    
+    static let userService: IUserService = shared.internalUserService;
+    
+    private lazy var internalUserService: IUserService = {
+        return UserService(api: self.internalAPIClient)
+    }()
+    
+    private lazy var internalAPIClient: APIClient = {
+       return APIClient()
+    }()
+}

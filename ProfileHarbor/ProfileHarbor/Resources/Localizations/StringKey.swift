@@ -10,6 +10,7 @@ import Foundation
 struct StringKey {
     static var appName: String { return localized("app_name") }
     static var textOk: String { return localized("text_ok") }
+    static var textCancel: String { return localized("text_cancel") }
 }
 
 extension StringKey {
