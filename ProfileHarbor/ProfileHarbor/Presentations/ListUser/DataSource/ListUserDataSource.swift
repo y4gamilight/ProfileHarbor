@@ -14,7 +14,7 @@ class ListUserDataSource: NSObject {
     var onReloadList: (() -> Void)?
     
     private var items: [UserViewModel] = []
-    var canLoadMore: Bool = true
+    var canLoadMore: Bool = false
     var lazyLoadManager: LazyLoadUserAvatarManager
     
     init(lazyLoadManager: LazyLoadUserAvatarManager) {

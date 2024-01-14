@@ -37,7 +37,8 @@ final class ListUserVM: BaseVM {
             }
             .store(in: &cancelables)
         input.selectedUserId
-            .sink {[weak self] _ in
+            .sink {[weak self] id in
+                self?.coordinator.navigateToUserDetail(id)
             }
             .store(in: &cancelables)
         return Output(appendItems: appendItemsSubject.eraseToAnyPublisher(),

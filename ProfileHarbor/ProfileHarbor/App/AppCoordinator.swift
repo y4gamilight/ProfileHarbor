@@ -32,4 +32,12 @@ final class AppCoordinator: Coordinator {
     override func finsih() {
         
     }
+    
+    func navigateToUserDetail(_ id: Int) {
+        let vm = UserDetailVM(userId: id, userService: Dependencies.userService)
+        let dataSource = UserDetailDataSource()
+        let userDetailVC: UserDetailVC = UserDetailVC.from(storyboard: Storyboards.main, with: vm)
+        userDetailVC.dataSource = UserDetailDataSource()
+        rootVC.pushViewController(userDetailVC, animated: true)
+    }
 }
