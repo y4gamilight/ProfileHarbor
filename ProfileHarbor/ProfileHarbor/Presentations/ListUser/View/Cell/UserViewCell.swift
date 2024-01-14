@@ -8,13 +8,16 @@
 import UIKit
 
 class UserViewCell: UITableViewCell {
+    struct Constants {
+        static let cornerRadiusImage: CGFloat = 30
+    }
     static let nibName: String = "UserViewCell"
     static let identifier: String = "UserViewCell"
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     
-    var model: UserViewModel! {
+    var model: UserViewModel? {
         didSet {
             updateUI()
         }
@@ -23,6 +26,7 @@ class UserViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        avatarImageView.layer.cornerRadius = Constants.cornerRadiusImage
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -33,13 +37,12 @@ class UserViewCell: UITableViewCell {
     
     
     private func updateUI() {
-        nameLabel.text = model.fullName
-        usernameLabel.text = model.userName
-        do {
-            let data = try Data(contentsOf: URL(string: model.avatarURL)!)
+        nameLabel.text = model?.fullName ?? ""
+        usernameLabel.text = model?.userName ?? ""
+        if let data = model?.imageData {
             avatarImageView.image = UIImage(data: data)
-        } catch (let e) {
-            debugPrint("thanhlt \(e.localizedDescription)")
+        } else {
+            avatarImageView.image = UIImage(named: PHImages.Name.icAvaPlaceholder)
         }
     }
 }

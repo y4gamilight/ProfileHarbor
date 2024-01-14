@@ -7,9 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F55F5EC2B53B8F500168DC0 /* AsyncOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F5EB2B53B8F500168DC0 /* AsyncOperator.swift */; };
+		9F55F5EE2B53B91100168DC0 /* LazyOperatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F5ED2B53B91100168DC0 /* LazyOperatorManager.swift */; };
+		9F55F5F02B53B9B400168DC0 /* LazyLoadUserAvatarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F5EF2B53B9B400168DC0 /* LazyLoadUserAvatarManager.swift */; };
+		9F55F5F22B53C8ED00168DC0 /* Data+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F5F12B53C8ED00168DC0 /* Data+Ext.swift */; };
+		9F55F5F42B53CECD00168DC0 /* PHImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F5F32B53CECD00168DC0 /* PHImages.swift */; };
+		9F55F5FB2B53D47000168DC0 /* LoadMoreViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F5F92B53D47000168DC0 /* LoadMoreViewCell.swift */; };
+		9F55F5FC2B53D47000168DC0 /* LoadMoreViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F55F5FA2B53D47000168DC0 /* LoadMoreViewCell.xib */; };
 		9F61F4B12B5229CF005F7809 /* mock_users.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F61F4B02B5229CF005F7809 /* mock_users.json */; };
 		9F61F4B32B5229F4005F7809 /* UserServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F61F4B22B5229F4005F7809 /* UserServiceTests.swift */; };
 		9F61F4B62B522A08005F7809 /* MockUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F61F4B52B522A08005F7809 /* MockUserService.swift */; };
+		9F62DE632B538A3B002F778A /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F62DE622B538A3B002F778A /* UIImage+Ext.swift */; };
+		9F62DE662B53957E002F778A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F62DE652B53957E002F778A /* Constants.swift */; };
 		9F77460F2B520AA500289326 /* IUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F77460E2B520AA500289326 /* IUserService.swift */; };
 		9F7746112B520AAD00289326 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7746102B520AAD00289326 /* UserService.swift */; };
 		9F776A4A2B5282F50048ED17 /* ListUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F776A492B5282F50048ED17 /* ListUserVC.swift */; };
@@ -66,9 +75,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9F55F5EB2B53B8F500168DC0 /* AsyncOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperator.swift; sourceTree = "<group>"; };
+		9F55F5ED2B53B91100168DC0 /* LazyOperatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyOperatorManager.swift; sourceTree = "<group>"; };
+		9F55F5EF2B53B9B400168DC0 /* LazyLoadUserAvatarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyLoadUserAvatarManager.swift; sourceTree = "<group>"; };
+		9F55F5F12B53C8ED00168DC0 /* Data+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Ext.swift"; sourceTree = "<group>"; };
+		9F55F5F32B53CECD00168DC0 /* PHImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHImages.swift; sourceTree = "<group>"; };
+		9F55F5F92B53D47000168DC0 /* LoadMoreViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMoreViewCell.swift; sourceTree = "<group>"; };
+		9F55F5FA2B53D47000168DC0 /* LoadMoreViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadMoreViewCell.xib; sourceTree = "<group>"; };
 		9F61F4B02B5229CF005F7809 /* mock_users.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mock_users.json; sourceTree = "<group>"; };
 		9F61F4B22B5229F4005F7809 /* UserServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceTests.swift; sourceTree = "<group>"; };
 		9F61F4B52B522A08005F7809 /* MockUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserService.swift; sourceTree = "<group>"; };
+		9F62DE622B538A3B002F778A /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
+		9F62DE652B53957E002F778A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9F77460E2B520AA500289326 /* IUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IUserService.swift; sourceTree = "<group>"; };
 		9F7746102B520AAD00289326 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		9F776A492B5282F50048ED17 /* ListUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUserVC.swift; sourceTree = "<group>"; };
@@ -136,6 +154,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F55F5E92B53B8D000168DC0 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9F55F5EA2B53B8D900168DC0 /* Operators */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		9F55F5EA2B53B8D900168DC0 /* Operators */ = {
+			isa = PBXGroup;
+			children = (
+				9F55F5EB2B53B8F500168DC0 /* AsyncOperator.swift */,
+				9F55F5ED2B53B91100168DC0 /* LazyOperatorManager.swift */,
+			);
+			path = Operators;
+			sourceTree = "<group>";
+		};
 		9F61F4AD2B52295E005F7809 /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,13 +204,13 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		9F77460D2B520A9800289326 /* User */ = {
+		9F62DE612B538A30002F778A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				9F77460E2B520AA500289326 /* IUserService.swift */,
-				9F7746102B520AAD00289326 /* UserService.swift */,
+				9F62DE622B538A3B002F778A /* UIImage+Ext.swift */,
+				9F55F5F12B53C8ED00168DC0 /* Data+Ext.swift */,
 			);
-			path = User;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		9F776A472B5282C20048ED17 /* ListUser */ = {
@@ -219,6 +254,7 @@
 		9F776A592B529E270048ED17 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				9F55F5EF2B53B9B400168DC0 /* LazyLoadUserAvatarManager.swift */,
 				9FA99DC12B52D32900CDE7E8 /* ListUserDataSource.swift */,
 			);
 			path = DataSource;
@@ -230,6 +266,8 @@
 				9FA99DBB2B52CAEF00CDE7E8 /* UserViewModel.swift */,
 				9FA99DBD2B52CB2000CDE7E8 /* UserViewCell.swift */,
 				9FA99DBE2B52CB2000CDE7E8 /* UserViewCell.xib */,
+				9F55F5F92B53D47000168DC0 /* LoadMoreViewCell.swift */,
+				9F55F5FA2B53D47000168DC0 /* LoadMoreViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -242,14 +280,6 @@
 				9FA99DC72B52E46A00CDE7E8 /* Storyboards.swift */,
 			);
 			path = Storyboard;
-			sourceTree = "<group>";
-		};
-		9FA99DC92B52F38D00CDE7E8 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-				9FE88A622B51B5960046250A /* User */,
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		9FE88A022B5142B40046250A = {
@@ -319,7 +349,7 @@
 		9FE88A422B5145980046250A /* Domains */ = {
 			isa = PBXGroup;
 			children = (
-				9FA99DC92B52F38D00CDE7E8 /* New Group */,
+				9FE88A622B51B5960046250A /* User */,
 			);
 			path = Domains;
 			sourceTree = "<group>";
@@ -336,6 +366,8 @@
 		9FE88A442B5146AA0046250A /* InterfaceAdapter */ = {
 			isa = PBXGroup;
 			children = (
+				9F55F5E92B53B8D000168DC0 /* Helpers */,
+				9F62DE612B538A30002F778A /* Extensions */,
 			);
 			path = InterfaceAdapter;
 			sourceTree = "<group>";
@@ -362,6 +394,7 @@
 			isa = PBXGroup;
 			children = (
 				9FE88A1A2B5142B50046250A /* Assets.xcassets */,
+				9F55F5F32B53CECD00168DC0 /* PHImages.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -416,6 +449,7 @@
 				9FE88A5A2B515DA40046250A /* APIClient.swift */,
 				9FE88A5C2B515DC10046250A /* APIEnvironment.swift */,
 				9FE88A5E2B5169500046250A /* APIError.swift */,
+				9F62DE652B53957E002F778A /* Constants.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -442,7 +476,8 @@
 		9FE88A642B51B5A50046250A /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				9F77460D2B520A9800289326 /* User */,
+				9F77460E2B520AA500289326 /* IUserService.swift */,
+				9F7746102B520AAD00289326 /* UserService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -584,6 +619,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FE88A1E2B5142B50046250A /* LaunchScreen.storyboard in Resources */,
+				9F55F5FC2B53D47000168DC0 /* LoadMoreViewCell.xib in Resources */,
 				9FE88A4E2B5148840046250A /* Localizable.strings in Resources */,
 				9FE88A1B2B5142B50046250A /* Assets.xcassets in Resources */,
 				9FA99DC02B52CB2000CDE7E8 /* UserViewCell.xib in Resources */,
@@ -613,28 +649,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F55F5F22B53C8ED00168DC0 /* Data+Ext.swift in Sources */,
+				9F55F5EC2B53B8F500168DC0 /* AsyncOperator.swift in Sources */,
 				9FE88A612B5171600046250A /* StringKey.swift in Sources */,
 				9FE88A4A2B5147080046250A /* AppCoordinator.swift in Sources */,
 				9F7746112B520AAD00289326 /* UserService.swift in Sources */,
 				9F776A4E2B52835D0048ED17 /* BaseNavVC.swift in Sources */,
 				9FE88A552B515D230046250A /* Request.swift in Sources */,
+				9F62DE662B53957E002F778A /* Constants.swift in Sources */,
 				9F776A4A2B5282F50048ED17 /* ListUserVC.swift in Sources */,
 				9FE88A5B2B515DA40046250A /* APIClient.swift in Sources */,
 				9FE88A192B5142B40046250A /* ProfileHarbor.xcdatamodeld in Sources */,
 				9F776A562B52869E0048ED17 /* ListUserVM.swift in Sources */,
 				9FE88A6A2B51B5F90046250A /* GithubUserData.swift in Sources */,
+				9F55F5EE2B53B91100168DC0 /* LazyOperatorManager.swift in Sources */,
 				9FE88A5F2B5169500046250A /* APIError.swift in Sources */,
 				9FE88A582B515D2E0046250A /* Response.swift in Sources */,
 				9FE88A0F2B5142B40046250A /* AppDelegate.swift in Sources */,
+				9F55F5FB2B53D47000168DC0 /* LoadMoreViewCell.swift in Sources */,
 				9FA99DC22B52D32900CDE7E8 /* ListUserDataSource.swift in Sources */,
 				9FE88A5D2B515DC10046250A /* APIEnvironment.swift in Sources */,
 				9FA99DC82B52E46A00CDE7E8 /* Storyboards.swift in Sources */,
 				9FE88A702B51C4AC0046250A /* GetUsersRequest.swift in Sources */,
 				9FA99DBC2B52CAEF00CDE7E8 /* UserViewModel.swift in Sources */,
 				9FA99DBF2B52CB2000CDE7E8 /* UserViewCell.swift in Sources */,
+				9F55F5F42B53CECD00168DC0 /* PHImages.swift in Sources */,
 				9F776A522B5283990048ED17 /* BaseVM.swift in Sources */,
 				9FE88A482B5146F30046250A /* Dependencies.swift in Sources */,
+				9F62DE632B538A3B002F778A /* UIImage+Ext.swift in Sources */,
 				9F776A542B5283AC0048ED17 /* Coordinator.swift in Sources */,
+				9F55F5F02B53B9B400168DC0 /* LazyLoadUserAvatarManager.swift in Sources */,
 				9F77460F2B520AA500289326 /* IUserService.swift in Sources */,
 				9FE88A682B51B5D00046250A /* GithubUser.swift in Sources */,
 				9FE88A112B5142B40046250A /* SceneDelegate.swift in Sources */,
