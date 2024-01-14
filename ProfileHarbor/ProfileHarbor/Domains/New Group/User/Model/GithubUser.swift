@@ -11,5 +11,5 @@ struct GithubUser {
     let id: Int
     let avatarUrl: String
     let userName: String
-    
+    let fullName: String
 }

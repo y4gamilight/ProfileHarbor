@@ -38,7 +38,7 @@ struct APIClient {
         return performRequest(request)
             .decode(type: R.Reps.self, decoder: JSONDecoder())
             .mapError { error -> APIError in
-                self.handleError(error)
+                return self.handleError(error)
             }
             .print()
             .eraseToAnyPublisher()

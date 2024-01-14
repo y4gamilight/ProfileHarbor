@@ -13,6 +13,7 @@ protocol BaseVM {
     associatedtype Output
     associatedtype C: Coordinator
     var coordinator: C! { get set }
-    var fetchedError: PassthroughSubject<String, Never> { get set }
+    var showErrorSubject: PassthroughSubject<String, Never> { get set }
+    var showLoadingSubject: PassthroughSubject<Bool, Never> { get set }
     func transform(input: Input) -> Output
 }

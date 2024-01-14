@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class BaseVC<ViewModel: BaseVM>: UIViewController {
     var viewModel: ViewModel!
@@ -45,6 +46,14 @@ class BaseVC<ViewModel: BaseVM>: UIViewController {
         let alertVC = UIAlertController(title: StringKey.appName, message: msg, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title:  StringKey.textCancel, style: .cancel))
         self.present(alertVC, animated: true)
+    }
+    
+    func showLoading() {
+        ProgressHUD.animate()
+    }
+    
+    func hideLoading() {
+        ProgressHUD.dismiss()
     }
 }
 

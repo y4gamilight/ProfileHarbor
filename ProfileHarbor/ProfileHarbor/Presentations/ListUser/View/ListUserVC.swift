@@ -23,7 +23,24 @@ final class ListUserVC: BaseVC<ListUserVM> {
         let input = ListUserVM.Input(getUsers: getUsersSubject.eraseToAnyPublisher())
         
         let output = viewModel.transform(input: input)
+        
+        output.showLoading
+            .receive(on: RunLoop.main)
+            .sink {[weak self] isShow in
+                isShow ? self?.showLoading() : self?.hideLoading()
+            }
+            .store(in: &cancelables)
+        
+        output.showError
+            .receive(on: RunLoop.main)
+            .sink {[weak self] message in
+                self?.showErorMessage(message)
+            }
+        
+            .store(in: &cancelables)
+        
         output.reloadList
+            .receive(on: RunLoop.main)
             .sink {[weak self] items in
                 self?.dataSource.updateItems(items)
                 self?.usersTableView.reloadData()
@@ -34,6 +51,9 @@ final class ListUserVC: BaseVC<ListUserVM> {
     }
     
     override func configuration() {
+        usersTableView.dataSource = dataSource
+        usersTableView.delegate = dataSource
         dataSource.registerCell(usersTableView)
+        getUsersSubject.send(())
     }
 }
