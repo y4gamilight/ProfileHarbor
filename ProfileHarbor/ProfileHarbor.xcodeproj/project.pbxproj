@@ -25,11 +25,14 @@
 		9F55F6122B540ECE00168DC0 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F6112B540ECE00168DC0 /* BaseTableViewCell.swift */; };
 		9F55F6152B54103700168DC0 /* UserDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F6142B54103600168DC0 /* UserDetailDataSource.swift */; };
 		9F55F6172B54132600168DC0 /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F6162B54132600168DC0 /* UITableView+Ext.swift */; };
+		9F55F6192B54380800168DC0 /* GetUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F6182B54380800168DC0 /* GetUserRequest.swift */; };
 		9F61F4B12B5229CF005F7809 /* mock_users.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F61F4B02B5229CF005F7809 /* mock_users.json */; };
 		9F61F4B32B5229F4005F7809 /* UserServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F61F4B22B5229F4005F7809 /* UserServiceTests.swift */; };
 		9F61F4B62B522A08005F7809 /* MockUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F61F4B52B522A08005F7809 /* MockUserService.swift */; };
 		9F62DE632B538A3B002F778A /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F62DE622B538A3B002F778A /* UIImage+Ext.swift */; };
 		9F62DE662B53957E002F778A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F62DE652B53957E002F778A /* Constants.swift */; };
+		9F6827C52B5573140041AF6E /* mock_user.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F6827C42B5573140041AF6E /* mock_user.json */; };
+		9F6827C72B557D090041AF6E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6827C62B557D090041AF6E /* Constants.swift */; };
 		9F77460F2B520AA500289326 /* IUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F77460E2B520AA500289326 /* IUserService.swift */; };
 		9F7746112B520AAD00289326 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7746102B520AAD00289326 /* UserService.swift */; };
 		9F776A4A2B5282F50048ED17 /* ListUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F776A492B5282F50048ED17 /* ListUserVC.swift */; };
@@ -104,11 +107,14 @@
 		9F55F6112B540ECE00168DC0 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		9F55F6142B54103600168DC0 /* UserDetailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailDataSource.swift; sourceTree = "<group>"; };
 		9F55F6162B54132600168DC0 /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
+		9F55F6182B54380800168DC0 /* GetUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserRequest.swift; sourceTree = "<group>"; };
 		9F61F4B02B5229CF005F7809 /* mock_users.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mock_users.json; sourceTree = "<group>"; };
 		9F61F4B22B5229F4005F7809 /* UserServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceTests.swift; sourceTree = "<group>"; };
 		9F61F4B52B522A08005F7809 /* MockUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserService.swift; sourceTree = "<group>"; };
 		9F62DE622B538A3B002F778A /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
 		9F62DE652B53957E002F778A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9F6827C42B5573140041AF6E /* mock_user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mock_user.json; sourceTree = "<group>"; };
+		9F6827C62B557D090041AF6E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9F77460E2B520AA500289326 /* IUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IUserService.swift; sourceTree = "<group>"; };
 		9F7746102B520AAD00289326 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		9F776A492B5282F50048ED17 /* ListUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUserVC.swift; sourceTree = "<group>"; };
@@ -261,7 +267,9 @@
 		9F61F4AF2B522985005F7809 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				9F6827C42B5573140041AF6E /* mock_user.json */,
 				9F61F4B02B5229CF005F7809 /* mock_users.json */,
+				9F6827C62B557D090041AF6E /* Constants.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -282,6 +290,13 @@
 				9F55F6162B54132600168DC0 /* UITableView+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9F6827C82B559B9D0041AF6E /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		9F776A472B5282C20048ED17 /* ListUser */ = {
@@ -421,6 +436,7 @@
 		9FE88A422B5145980046250A /* Domains */ = {
 			isa = PBXGroup;
 			children = (
+				9F6827C82B559B9D0041AF6E /* Repository */,
 				9FE88A622B51B5960046250A /* User */,
 			);
 			path = Domains;
@@ -567,6 +583,7 @@
 			isa = PBXGroup;
 			children = (
 				9FE88A6F2B51C4AC0046250A /* GetUsersRequest.swift */,
+				9F55F6182B54380800168DC0 /* GetUserRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -706,6 +723,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F6827C52B5573140041AF6E /* mock_user.json in Resources */,
 				9F61F4B12B5229CF005F7809 /* mock_users.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -753,6 +771,7 @@
 				9FE88A5D2B515DC10046250A /* APIEnvironment.swift in Sources */,
 				9FA99DC82B52E46A00CDE7E8 /* Storyboards.swift in Sources */,
 				9FE88A702B51C4AC0046250A /* GetUsersRequest.swift in Sources */,
+				9F55F6192B54380800168DC0 /* GetUserRequest.swift in Sources */,
 				9FA99DBC2B52CAEF00CDE7E8 /* UserViewModel.swift in Sources */,
 				9FA99DBF2B52CB2000CDE7E8 /* UserViewCell.swift in Sources */,
 				9F55F5F42B53CECD00168DC0 /* PHImages.swift in Sources */,
@@ -777,6 +796,7 @@
 			files = (
 				9F61F4B62B522A08005F7809 /* MockUserService.swift in Sources */,
 				9F61F4B32B5229F4005F7809 /* UserServiceTests.swift in Sources */,
+				9F6827C72B557D090041AF6E /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,7 +9,7 @@ import UIKit
 
 class ListUserDataSource: NSObject {
     
-    var onDidSelectItem: ((Int) -> Void)?
+    var onDidSelectItem: ((String) -> Void)?
     var onLoadMore: (() -> Void)?
     var onReloadList: (() -> Void)?
     
@@ -73,7 +73,7 @@ extension ListUserDataSource: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        onDidSelectItem?(items[indexPath.row].uid)
+        onDidSelectItem?(items[indexPath.row].userName)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

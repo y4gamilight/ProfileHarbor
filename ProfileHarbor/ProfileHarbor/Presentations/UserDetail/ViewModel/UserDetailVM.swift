@@ -14,6 +14,14 @@ class UserDetailVM: BaseVM {
     private var reloadDataSubject = PassthroughSubject<(UserInfoCellModel, [RepositoryCellModel]), Never>()
     private var cancelables = Set<AnyCancellable>()
     
+    var coordinator: AppCoordinator!
+    private var userService: IUserService
+    private var username: String
+    init(username: String, userService: IUserService) {
+        self.username = username
+        self.userService = userService
+    }
+    
     func transform(input: Input) -> Output {
         input.getDetail
             .sink {[weak self] in
@@ -23,22 +31,21 @@ class UserDetailVM: BaseVM {
         return Output(reloadData: reloadDataSubject.eraseToAnyPublisher(), showError: showErrorSubject.eraseToAnyPublisher(), showLoading: showLoadingSubject.eraseToAnyPublisher())
     }
     
-    var coordinator: AppCoordinator!
-    private var userService: IUserService
-    private var userId: Int
-    init(userId: Int, userService: IUserService) {
-        self.userId = userId
-        self.userService = userService
-    }
     
     private func fetchDetail() {
         showLoadingSubject.send(true)
-        let model = UserInfoCellModel(userName: "Le Tan Thanh")
-        let repositories = [
-            RepositoryCellModel(id: 1, name: "thanhlt", link: URL(string: "https://"), numOfStars: 10, languages: "Java"),
-        RepositoryCellModel(id: 2, name: "thanhlt2", link: URL(string: "https://"), numOfStars: 10, languages: "Java")
-        ]
-        reloadDataSubject.send((model, repositories))
+        userService.getDetailByUserName(username)
+            .sink {[weak self] completion in
+                if case .failure = completion {
+                    self?.showLoadingSubject.send(false)
+                }
+            } receiveValue: {[weak self] user in
+                let userInfo = UserInfoCellModel(avatarUrl: user.avatarUrl, fullName: user.fullName, userName: user.userName, numOfFollowings: 0, numOfFollowers: 0, isLoading: true)
+                self?.showLoadingSubject.send(false)
+                self?.reloadDataSubject.send((userInfo, []))
+            }
+            .store(in: &cancelables)
+
     }
 }
 

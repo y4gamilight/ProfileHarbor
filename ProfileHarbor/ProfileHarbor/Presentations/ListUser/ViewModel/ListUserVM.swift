@@ -36,9 +36,9 @@ final class ListUserVM: BaseVM {
                 self?.fetchUsers()
             }
             .store(in: &cancelables)
-        input.selectedUserId
-            .sink {[weak self] id in
-                self?.coordinator.navigateToUserDetail(id)
+        input.selectedUser
+            .sink {[weak self] username in
+                self?.coordinator.navigateToUserDetail(username)
             }
             .store(in: &cancelables)
         return Output(appendItems: appendItemsSubject.eraseToAnyPublisher(),
@@ -78,7 +78,7 @@ extension ListUserVM {
     struct Input {
         let getUsers: AnyPublisher<Void, Never>
         let loadMore: AnyPublisher<Void, Never>
-        let selectedUserId: AnyPublisher<Int, Never>
+        let selectedUser: AnyPublisher<String, Never>
     }
     
     struct Output {
