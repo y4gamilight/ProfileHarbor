@@ -24,7 +24,7 @@ final class UserServiceTests: XCTestCase {
     }
 
     func testGetAllUserSuccess() throws {
-        sut.getAll()
+        sut.getAll(since: nil)
             .sink(receiveCompletion: { _ in
                 
             }, receiveValue: { users in
@@ -32,6 +32,28 @@ final class UserServiceTests: XCTestCase {
             })
             .store(in: &cancelables)
     }
+    
+    func testGetUserDetail() throws {
+        sut.getDetailByUserName(Constants.UserData.validUser)
+            .sink(receiveCompletion: { _ in
+                
+            }, receiveValue: { users in
+                XCTAssert(users.userName == Constants.UserData.validUser)
+            })
+            .store(in: &cancelables)
+    }
+    
+    func testGetUserDetailByInvalidId() throws {
+        sut.getDetailByUserName(Constants.UserData.invalidUser)
+            .sink(receiveCompletion: { completion in
+                if case .failure(let failure) = completion {
+                    XCTAssert(failure == .notFound)
+                }
+            }, receiveValue: { users in
+            })
+            .store(in: &cancelables)
+    }
+
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.

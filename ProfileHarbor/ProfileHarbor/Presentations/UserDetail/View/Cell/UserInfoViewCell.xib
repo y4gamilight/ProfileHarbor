@@ -107,7 +107,7 @@
                 <outlet property="followerLabel" destination="Orz-ft-czo" id="oax-LA-mHh"/>
                 <outlet property="followingLabel" destination="Ubc-ZG-qSO" id="a3e-Zf-c5y"/>
                 <outlet property="fullNameLabel" destination="cWR-B7-GRX" id="XE1-mr-0RG"/>
-                <outlet property="usernameLabel" destination="cWR-B7-GRX" id="3sX-91-aXG"/>
+                <outlet property="usernameLabel" destination="Ayb-Qy-4Sb" id="oHe-ze-PcH"/>
             </connections>
             <point key="canvasLocation" x="-3.0534351145038165" y="53.521126760563384"/>
         </tableViewCell>
