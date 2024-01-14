@@ -12,4 +12,6 @@ struct GithubUser {
     let avatarUrl: String
     let userName: String
     let fullName: String
+    let following: Int
+    let followers: Int
 }

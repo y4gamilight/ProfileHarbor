@@ -28,6 +28,18 @@ struct GithubUserData: Response {
     let siteAdmin: Bool
     let name: String?
     let email: String?
+    let company: String?
+    let blog: String?
+    let location: String?
+    let hireable: Bool?
+    let bio: String?
+    let twitterUsername: String?
+    let publicRepos: Int?
+    let publicGists: Int?
+    let followers: Int?
+    let following: Int?
+    let createdAt: String?
+    let updatedAt: String?
 
     enum CodingKeys: String, CodingKey {
         case login, id, nodeId
@@ -48,5 +60,17 @@ struct GithubUserData: Response {
         case siteAdmin = "site_admin"
         case name
         case email
+        case company
+        case blog
+        case location
+        case hireable
+        case bio
+        case twitterUsername
+        case publicRepos
+        case publicGists
+        case followers
+        case following
+        case createdAt
+        case updatedAt
     }
 }

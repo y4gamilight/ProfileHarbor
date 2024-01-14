@@ -15,7 +15,16 @@ struct UserInfoCellModel {
     let numOfFollowers: Int
     let isLoading: Bool
     
-    init(avatarUrl: String = "", fullName: String = "", userName: String = "", numOfFollowings: Int = 0, numOfFollowers: Int = 0, isLoading: Bool = false) {
+    init() {
+        self.avatarUrl = ""
+        self.fullName = ""
+        self.userName = ""
+        self.numOfFollowings = 0
+        self.numOfFollowers = 0
+        self.isLoading = false
+    }
+    
+    init(avatarUrl: String, fullName: String, userName: String, numOfFollowings: Int, numOfFollowers: Int, isLoading: Bool) {
         self.avatarUrl = avatarUrl
         self.fullName = fullName
         self.userName = userName
@@ -23,4 +32,5 @@ struct UserInfoCellModel {
         self.numOfFollowers = numOfFollowers
         self.isLoading = isLoading
     }
+    
 }

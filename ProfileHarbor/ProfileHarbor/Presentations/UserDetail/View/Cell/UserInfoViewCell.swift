@@ -38,6 +38,10 @@ class UserInfoViewCell: BaseTableViewCell {
     }
     
     private func updateUI() {
-        
+        fullNameLabel.text = model.fullName
+        usernameLabel.text = model.userName
+        avatarImageView.imageFromURLString(model.avatarUrl)
+        followerLabel.text = "\(model.numOfFollowers)"
+        followingLabel.text = "\(model.numOfFollowings)"
     }
 }
