@@ -22,7 +22,7 @@ class MockUserService: IUserService {
             let items = try JSONDecoder().decode([GithubUserData].self, from: dataFile)
             return Just(items)
                 .tryMap({ items in
-                    return items.map { GithubUser(id: $0.id, avatarUrl: $0.avatarUrl, userName: $0.login)}
+                    return items.map { GithubUser(id: $0.id, avatarUrl: $0.avatarUrl, userName: $0.login, fullName: $0.name ?? $0.login)}
                 })
                 .mapError({ _ in UserError.errorServer })
                 .eraseToAnyPublisher()

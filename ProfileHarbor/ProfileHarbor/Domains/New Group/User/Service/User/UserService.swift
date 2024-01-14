@@ -19,7 +19,7 @@ class UserService: IUserService {
         let request = GetUsersRequest()
         return api.requestCollection(request)
             .map({ users in
-                return users.map { GithubUser(id: $0.id, avatarUrl: $0.avatarUrl, userName: $0.login) }
+                return users.map { GithubUser(id: $0.id, avatarUrl: $0.avatarUrl, userName: $0.login, fullName: $0.name ?? $0.login) }
             })
             .mapError({ error -> UserError in
                 switch error {

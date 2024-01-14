@@ -1,5 +1,5 @@
 //
-//  GithubUser.swift
+//  UserViewModel.swift
 //  ProfileHarbor
 //
 //  Created by Lê Thành on 13/01/2024.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct GithubUser {
-    let id: Int
-    let avatarUrl: String
+struct UserViewModel {
+    let uid: Int
+    let fullName: String
     let userName: String
-    
+    let avatarURL: String
 }

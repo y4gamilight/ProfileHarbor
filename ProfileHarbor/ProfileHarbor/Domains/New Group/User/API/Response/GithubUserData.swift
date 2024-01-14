@@ -26,6 +26,8 @@ struct GithubUserData: Response {
     let receivedEventsUrl: String
     let type: String
     let siteAdmin: Bool
+    let name: String?
+    let email: String?
 
     enum CodingKeys: String, CodingKey {
         case login, id, nodeId
@@ -44,5 +46,7 @@ struct GithubUserData: Response {
         case receivedEventsUrl = "received_events_url"
         case type
         case siteAdmin = "site_admin"
+        case name
+        case email
     }
 }
