@@ -10,7 +10,7 @@ import Combine
 @testable import ProfileHarbor
 
 class MockUserService: IUserService {
-    func getAll() -> AnyPublisher<[GithubUser], UserError> {
+    func getAll(since id: Int?) -> AnyPublisher<[GithubUser], UserError> {
         let path = Bundle(for: MockUserService.self).path(forResource: "mock_users", ofType: "json")
         
         guard let filePath = path,

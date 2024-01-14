@@ -15,5 +15,5 @@ public enum UserError: Error {
 }
 
 protocol IUserService {
-    func getAll() -> AnyPublisher<[GithubUser], UserError>
+    func getAll(since id: Int?) -> AnyPublisher<[GithubUser], UserError> 
 }

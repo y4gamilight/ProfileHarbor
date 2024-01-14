@@ -14,13 +14,15 @@ final class ListUserVC: BaseVC<ListUserVM> {
     
     private var cancelables = Set<AnyCancellable>()
     private var getUsersSubject = PassthroughSubject<Void, Never>()
+    private var loadMoreSubject = PassthroughSubject<Void, Never>()
+    private var selectedUserSubject = PassthroughSubject<Int, Never>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func bindData() {
-        let input = ListUserVM.Input(getUsers: getUsersSubject.eraseToAnyPublisher())
+        let input = ListUserVM.Input(getUsers: getUsersSubject.eraseToAnyPublisher(), loadMore: loadMoreSubject.eraseToAnyPublisher(), selectedUserId: selectedUserSubject.eraseToAnyPublisher())
         
         let output = viewModel.transform(input: input)
         
@@ -39,15 +41,23 @@ final class ListUserVC: BaseVC<ListUserVM> {
         
             .store(in: &cancelables)
         
-        output.reloadList
+        output.appendItems
             .receive(on: RunLoop.main)
             .sink {[weak self] items in
-                self?.dataSource.updateItems(items)
+                self?.dataSource.appendItems(items)
                 self?.usersTableView.reloadData()
             }
             .store(in: &cancelables)
-            
-
+    }
+    
+    override func bindEvent() {
+        dataSource.onLoadMore = {[weak self] in
+            self?.loadMoreSubject.send(())
+        }
+        
+        dataSource.onDidSelectItem = {[weak self] id in
+            self?.selectedUserSubject.send(id)
+        }
     }
     
     override func configuration() {

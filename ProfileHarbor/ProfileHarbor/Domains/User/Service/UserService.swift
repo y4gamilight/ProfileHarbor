@@ -15,8 +15,8 @@ class UserService: IUserService {
         self.api = api
     }
     
-    func getAll() -> AnyPublisher<[GithubUser], UserError> {
-        let request = GetUsersRequest()
+    func getAll(since id: Int?) -> AnyPublisher<[GithubUser], UserError> {
+        let request = GetUsersRequest(sinceId: id)
         return api.requestCollection(request)
             .map({ users in
                 return users.map { GithubUser(id: $0.id, avatarUrl: $0.avatarUrl, userName: $0.login, fullName: $0.name ?? $0.login) }

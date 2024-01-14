@@ -13,7 +13,7 @@ final class AppCoordinator: Coordinator {
         let vm = ListUserVM(userSerivce: Dependencies.userService)
         vm.coordinator = self
         let listUserVC: ListUserVC = ListUserVC.from(storyboard: Storyboards.main, with: vm)
-        listUserVC.dataSource = ListUserDataSource()
+        listUserVC.dataSource = ListUserDataSource(lazyLoadManager: LazyLoadUserAvatarManager())
         let navVC = BaseNavController(baseVC: listUserVC)
         navVC.isNavigationBarHidden = true
         return navVC
