@@ -12,4 +12,5 @@ struct UserViewModel {
     let fullName: String
     let userName: String
     let avatarURL: String
+    var imageData: Data?
 }
