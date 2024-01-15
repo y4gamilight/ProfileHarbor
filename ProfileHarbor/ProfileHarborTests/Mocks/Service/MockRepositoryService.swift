@@ -26,7 +26,7 @@ class MockRepositoryService: IRepositoryService {
             let items = try JSONDecoder().decode([GitHubRepositoryData].self, from: dataFile)
             return Just(items)
                 .tryMap({ items in
-                    return items.map { GitHubRepository(id: $0.id, nodeID: $0.nodeID, name: $0.name, fullName: $0.fullName, isPrivate: $0.isPrivate, url: $0.url, forksURL: $0.forksURL, language: $0.language, isFork: $0.isFork) }
+                    return items.map { GitHubRepository(id: $0.id, nodeID: $0.nodeID, name: $0.name, fullName: $0.fullName, isPrivate: $0.isPrivate, url: $0.url, forksURL: $0.forksURL, language: $0.language, isFork: $0.isFork, starCount: $0.starCount) }
                 })
                 .mapError({ _ in RepositoryError.errorServer })
                 .eraseToAnyPublisher()

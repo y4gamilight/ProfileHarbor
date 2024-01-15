@@ -17,4 +17,5 @@ struct GitHubRepository {
     let forksURL: String
     let language: String?
     let isFork: Bool
+    let starCount: Int
 }
