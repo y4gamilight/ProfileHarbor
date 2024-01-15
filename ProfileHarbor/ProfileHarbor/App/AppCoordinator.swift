@@ -34,10 +34,10 @@ final class AppCoordinator: Coordinator {
     }
     
     func navigateToUserDetail(_ username: String) {
-        let vm = UserDetailVM(username: username, userService: Dependencies.userService)
+        let vm = UserDetailVM(username: username, userService: Dependencies.userService, repoService: Dependencies.repoService)
         let dataSource = UserDetailDataSource()
         let userDetailVC: UserDetailVC = UserDetailVC.from(storyboard: Storyboards.main, with: vm)
-        userDetailVC.dataSource = UserDetailDataSource()
+        userDetailVC.dataSource = dataSource
         rootVC.pushViewController(userDetailVC, animated: true)
     }
 }

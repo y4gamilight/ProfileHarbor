@@ -15,5 +15,5 @@ public enum RepositoryError: Error {
 }
 
 protocol IRepositoryService {
-    func getAll(by username: String) -> AnyPublisher<[GitHubRepository], RepositoryError>
+    func getAll(by username: String, page: Int) -> AnyPublisher<[GitHubRepository], RepositoryError>
 }

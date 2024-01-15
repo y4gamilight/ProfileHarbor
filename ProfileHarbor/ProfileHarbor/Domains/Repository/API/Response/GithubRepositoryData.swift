@@ -30,6 +30,7 @@ struct GitHubRepositoryData: Response {
     let openIssues: Int
     let watchers: Int
     let defaultBranch: String
+    let starCount: Int
     
     enum CodingKeys: String, CodingKey {
         case id, name, owner, description, url, forks, watchers, language, visibility
@@ -45,6 +46,7 @@ struct GitHubRepositoryData: Response {
         case allowForking = "allow_forking"
         case isTemplate = "is_template"
         case openIssues = "open_issues"
+        case starCount = "stargazers_count"
         case defaultBranch = "default_branch"
     }
 }

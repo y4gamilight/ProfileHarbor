@@ -24,12 +24,18 @@ class UserDetailVC: BaseVC<UserDetailVM> {
     override func bindEvent() {
         let input = UserDetailVM.Input(getDetail: getDetailSubject.eraseToAnyPublisher())
         let output = viewModel.transform(input: input)
-        output.reloadData
+        output.reloadUserSection
             .receive(on: RunLoop.main)
-            .sink {[weak self] userInfo, repositories in
+            .sink {[weak self] userInfo in
                 self?.dataSource.userInfo = userInfo
+                self?.tableView.reloadSections([UserDetailDataSource.Section.user.rawValue], with: .automatic)
+            }
+            .store(in: &cancelables)
+        output.reloadReposSection
+            .receive(on: RunLoop.main)
+            .sink {[weak self] repositories in
                 self?.dataSource.repositories = repositories
-                self?.tableView.reloadData()
+                self?.tableView.reloadSections([UserDetailDataSource.Section.repository.rawValue], with: .automatic)
             }
             .store(in: &cancelables)
     }
