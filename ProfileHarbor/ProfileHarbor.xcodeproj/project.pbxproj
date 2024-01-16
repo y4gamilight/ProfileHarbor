@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F49D1A62B56B9DD0065F646 /* WebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F49D1A52B56B9DD0065F646 /* WebVC.swift */; };
+		9F49D1A82B56BA040065F646 /* WebVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F49D1A72B56BA040065F646 /* WebVM.swift */; };
 		9F55F5EC2B53B8F500168DC0 /* AsyncOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F5EB2B53B8F500168DC0 /* AsyncOperator.swift */; };
 		9F55F5EE2B53B91100168DC0 /* LazyOperatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F5ED2B53B91100168DC0 /* LazyOperatorManager.swift */; };
 		9F55F5F02B53B9B400168DC0 /* LazyLoadUserAvatarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F5EF2B53B9B400168DC0 /* LazyLoadUserAvatarManager.swift */; };
@@ -97,6 +99,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9F49D1A52B56B9DD0065F646 /* WebVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebVC.swift; sourceTree = "<group>"; };
+		9F49D1A72B56BA040065F646 /* WebVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebVM.swift; sourceTree = "<group>"; };
 		9F55F5EB2B53B8F500168DC0 /* AsyncOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperator.swift; sourceTree = "<group>"; };
 		9F55F5ED2B53B91100168DC0 /* LazyOperatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyOperatorManager.swift; sourceTree = "<group>"; };
 		9F55F5EF2B53B9B400168DC0 /* LazyLoadUserAvatarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyLoadUserAvatarManager.swift; sourceTree = "<group>"; };
@@ -198,6 +202,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F49D1A22B56B9880065F646 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				9F49D1A42B56B9A10065F646 /* ViewModel */,
+				9F49D1A32B56B9960065F646 /* View */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
+		9F49D1A32B56B9960065F646 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9F49D1A52B56B9DD0065F646 /* WebVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9F49D1A42B56B9A10065F646 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9F49D1A72B56BA040065F646 /* WebVM.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		9F55F5E92B53B8D000168DC0 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -527,6 +556,7 @@
 		9FE88A452B5146B70046250A /* Presentations */ = {
 			isa = PBXGroup;
 			children = (
+				9F49D1A22B56B9880065F646 /* WebView */,
 				9F55F5FD2B53E47000168DC0 /* UserDetail */,
 				9F776A472B5282C20048ED17 /* ListUser */,
 			);
@@ -843,6 +873,7 @@
 				9F55F6192B54380800168DC0 /* GetUserRequest.swift in Sources */,
 				9FA99DBC2B52CAEF00CDE7E8 /* UserViewModel.swift in Sources */,
 				9FA99DBF2B52CB2000CDE7E8 /* UserViewCell.swift in Sources */,
+				9F49D1A62B56B9DD0065F646 /* WebVC.swift in Sources */,
 				9F6827D72B55B0630041AF6E /* GithubRepositoryData.swift in Sources */,
 				9F55F5F42B53CECD00168DC0 /* PHImages.swift in Sources */,
 				9F776A522B5283990048ED17 /* BaseVM.swift in Sources */,
@@ -853,6 +884,7 @@
 				9F776A542B5283AC0048ED17 /* Coordinator.swift in Sources */,
 				9F55F5F02B53B9B400168DC0 /* LazyLoadUserAvatarManager.swift in Sources */,
 				9F77460F2B520AA500289326 /* IUserService.swift in Sources */,
+				9F49D1A82B56BA040065F646 /* WebVM.swift in Sources */,
 				9FE88A682B51B5D00046250A /* GithubUser.swift in Sources */,
 				9FE88A112B5142B40046250A /* SceneDelegate.swift in Sources */,
 				9F776A502B52837E0048ED17 /* BaseVC.swift in Sources */,

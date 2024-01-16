@@ -35,9 +35,16 @@ final class AppCoordinator: Coordinator {
     
     func navigateToUserDetail(_ username: String) {
         let vm = UserDetailVM(username: username, userService: Dependencies.userService, repoService: Dependencies.repoService)
+        vm.coordinator = self
         let dataSource = UserDetailDataSource()
         let userDetailVC: UserDetailVC = UserDetailVC.from(storyboard: Storyboards.main, with: vm)
         userDetailVC.dataSource = dataSource
         rootVC.pushViewController(userDetailVC, animated: true)
+    }
+    
+    func presentWebView(_ url: URL?) {
+        let vm = WebVM(url: url)
+        let webVC = WebVC.from(storyboard: Storyboards.main, with: vm)
+        rootVC.present(webVC, animated: true)
     }
 }

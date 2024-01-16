@@ -15,6 +15,7 @@ final class UserDetailDataSource: NSObject {
     }
     var repositories: [RepositoryCellModel] = []
     var userInfo = UserInfoCellModel()
+    var onDidSelectRepository: ((URL?) -> Void)?
     
     func registerCell(_ tableView: UITableView) {
         tableView.registerCell(of: UserInfoViewCell.self)
@@ -47,5 +48,11 @@ extension UserDetailDataSource: UITableViewDelegate, UITableViewDataSource {
             cell.model = repositories[row]
             return cell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard indexPath.section == Section.repository.rawValue else { return }
+        let item = repositories[indexPath.row]
+        onDidSelectRepository?(item.link)
     }
 }
