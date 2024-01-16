@@ -25,7 +25,7 @@ final class RepositoryServiceTests: XCTestCase {
     }
 
     func testGetAllRepositoriesSuccess() throws {
-        sut.getAll(by: Constants.UserData.validUser)
+        sut.getAll(by: Constants.UserData.validUser, page: 1)
             .sink(receiveCompletion: { _ in
                 
             }, receiveValue: { repos in
