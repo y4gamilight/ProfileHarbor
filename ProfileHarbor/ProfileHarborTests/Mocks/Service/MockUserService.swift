@@ -26,8 +26,8 @@ class MockUserService: IUserService {
                 .tryMap({ items in
                     return items.map { GithubUser(id: $0.id, avatarUrl: $0.avatarUrl, userName: $0.login, fullName: $0.name ?? $0.login ,following: $0.following ?? 0, followers: $0.followers ?? 0)}
                 })
-                .mapError({ _ in UserError.errorServer })
                 .delay(for: 1.0, scheduler: RunLoop.main)
+                .mapError({ _ in UserError.errorServer })
                 .eraseToAnyPublisher()
         } catch(let error) {
             debugPrint(error.localizedDescription)
@@ -38,8 +38,9 @@ class MockUserService: IUserService {
     }
     
     func getDetailByUserName(_ username: String) -> AnyPublisher<GithubUser, UserError> {
-        guard username == Constants.UserData.invalidUser else {
+        guard username == Constants.UserData.validUser else {
             return Fail(error: UserError.notFound)
+                .delay(for: 1.0, scheduler: RunLoop.main)
                 .eraseToAnyPublisher()
         }
         let path = Bundle(for: MockUserService.self).path(forResource: "mock_user", ofType: "json")
@@ -47,6 +48,7 @@ class MockUserService: IUserService {
         guard let filePath = path,
               let dataFile = try? Data(contentsOf:  URL(filePath: filePath)) else {
             return Fail(error: UserError.errorServer)
+                .delay(for: 1.0, scheduler: RunLoop.main)
                 .eraseToAnyPublisher()
         }
         do {
@@ -55,11 +57,13 @@ class MockUserService: IUserService {
                 .tryMap({ user in
                     return GithubUser(id: user.id, avatarUrl: user.avatarUrl, userName: user.login, fullName: user.name ?? user.login ,following: user.following ?? 0, followers: user.followers ?? 0)
                 })
+                .delay(for: 1.0, scheduler: RunLoop.main)
                 .mapError({ _ in UserError.errorServer })
                 .eraseToAnyPublisher()
         } catch(let error) {
             debugPrint(error.localizedDescription)
             return Fail(error: UserError.errorServer)
+                .delay(for: 1.0, scheduler: RunLoop.main)
                 .eraseToAnyPublisher()
         }
     }
