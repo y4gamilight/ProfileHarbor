@@ -34,4 +34,24 @@ final class RepositoryServiceTests: XCTestCase {
             .store(in: &cancelables)
     }
     
+    func testGetRepositoriesWithInvalidUser() throws {
+        sut.getAll(by: Constants.UserData.invalidUser, page: 1)
+            .sink(receiveCompletion: { completion in
+                if case .failure(let failure) = completion {
+                    XCTAssert(failure == .notFound)
+                }
+            }, receiveValue: { repos in
+            })
+            .store(in: &cancelables)
+    }
+    
+    func testGetRepositoriesWithEmptyRepos() throws {
+        sut.getAll(by: Constants.UserData.userWithEmpty, page: 1)
+            .sink(receiveCompletion: { _ in
+            }, receiveValue: { repos in
+                XCTAssert(repos.count == 0, "Number of items is 0")
+            })
+            .store(in: &cancelables)
+    }
+    
 }
