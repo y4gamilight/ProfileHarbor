@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9F49D1A62B56B9DD0065F646 /* WebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F49D1A52B56B9DD0065F646 /* WebVC.swift */; };
 		9F49D1A82B56BA040065F646 /* WebVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F49D1A72B56BA040065F646 /* WebVM.swift */; };
+		9F49D1AD2B56F4E40065F646 /* ListUserViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F49D1AC2B56F4E40065F646 /* ListUserViewModelTest.swift */; };
 		9F55F5EC2B53B8F500168DC0 /* AsyncOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F5EB2B53B8F500168DC0 /* AsyncOperator.swift */; };
 		9F55F5EE2B53B91100168DC0 /* LazyOperatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F5ED2B53B91100168DC0 /* LazyOperatorManager.swift */; };
 		9F55F5F02B53B9B400168DC0 /* LazyLoadUserAvatarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F5EF2B53B9B400168DC0 /* LazyLoadUserAvatarManager.swift */; };
@@ -101,6 +102,7 @@
 /* Begin PBXFileReference section */
 		9F49D1A52B56B9DD0065F646 /* WebVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebVC.swift; sourceTree = "<group>"; };
 		9F49D1A72B56BA040065F646 /* WebVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebVM.swift; sourceTree = "<group>"; };
+		9F49D1AC2B56F4E40065F646 /* ListUserViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUserViewModelTest.swift; sourceTree = "<group>"; };
 		9F55F5EB2B53B8F500168DC0 /* AsyncOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperator.swift; sourceTree = "<group>"; };
 		9F55F5ED2B53B91100168DC0 /* LazyOperatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyOperatorManager.swift; sourceTree = "<group>"; };
 		9F55F5EF2B53B9B400168DC0 /* LazyLoadUserAvatarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyLoadUserAvatarManager.swift; sourceTree = "<group>"; };
@@ -227,6 +229,23 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		9F49D1AB2B56F35A0065F646 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9F49D1AC2B56F4E40065F646 /* ListUserViewModelTest.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9F49D1AE2B56F6AD0065F646 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				9F61F4B22B5229F4005F7809 /* UserServiceTests.swift */,
+				9F6827DA2B55B4120041AF6E /* RepositoryServiceTests.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		9F55F5E92B53B8D000168DC0 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,13 +311,13 @@
 			path = DataSource;
 			sourceTree = "<group>";
 		};
-		9F61F4AD2B52295E005F7809 /* API */ = {
+		9F61F4AD2B52295E005F7809 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				9F61F4B22B5229F4005F7809 /* UserServiceTests.swift */,
-				9F6827DA2B55B4120041AF6E /* RepositoryServiceTests.swift */,
+				9F49D1AE2B56F6AD0065F646 /* Service */,
+				9F49D1AB2B56F35A0065F646 /* ViewModel */,
 			);
-			path = API;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		9F61F4AE2B522962005F7809 /* Mocks */ = {
@@ -499,7 +518,7 @@
 			isa = PBXGroup;
 			children = (
 				9F61F4AE2B522962005F7809 /* Mocks */,
-				9F61F4AD2B52295E005F7809 /* API */,
+				9F61F4AD2B52295E005F7809 /* Tests */,
 			);
 			path = ProfileHarborTests;
 			sourceTree = "<group>";
@@ -899,6 +918,7 @@
 				9F61F4B62B522A08005F7809 /* MockUserService.swift in Sources */,
 				9F6827DD2B55B4540041AF6E /* MockRepositoryService.swift in Sources */,
 				9F61F4B32B5229F4005F7809 /* UserServiceTests.swift in Sources */,
+				9F49D1AD2B56F4E40065F646 /* ListUserViewModelTest.swift in Sources */,
 				9F6827C72B557D090041AF6E /* Constants.swift in Sources */,
 				9F6827DB2B55B4120041AF6E /* RepositoryServiceTests.swift in Sources */,
 			);
