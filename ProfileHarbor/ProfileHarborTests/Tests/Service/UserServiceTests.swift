@@ -24,34 +24,48 @@ final class UserServiceTests: XCTestCase {
     }
 
     func testGetAllUserSuccess() throws {
+        let expectation = self.expectation(description: "test")
         sut.getAll(since: nil)
             .sink(receiveCompletion: { _ in
                 
             }, receiveValue: { users in
                 XCTAssert(users.count == 30, "Number of items is 30")
+                expectation.fulfill()
             })
             .store(in: &cancelables)
+        waitForExpectations(timeout: 5.0)
     }
     
     func testGetUserDetail() throws {
+        let expectation = self.expectation(description: "test")
         sut.getDetailByUserName(Constants.UserData.validUser)
-            .sink(receiveCompletion: { _ in
-                
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    debugPrint("Finished")
+                case .failure(let error):
+                    debugPrint("\(error)")
+                }
             }, receiveValue: { users in
                 XCTAssert(users.userName == Constants.UserData.validUser)
+                expectation.fulfill()
             })
             .store(in: &cancelables)
+        waitForExpectations(timeout: 5.0)
     }
     
     func testGetUserDetailByInvalidId() throws {
+        let expectation = self.expectation(description: "test")
         sut.getDetailByUserName(Constants.UserData.invalidUser)
             .sink(receiveCompletion: { completion in
                 if case .failure(let failure) = completion {
                     XCTAssert(failure == .notFound)
+                    expectation.fulfill()
                 }
             }, receiveValue: { users in
             })
             .store(in: &cancelables)
+        waitForExpectations(timeout: 5.0)
     }
 
 
