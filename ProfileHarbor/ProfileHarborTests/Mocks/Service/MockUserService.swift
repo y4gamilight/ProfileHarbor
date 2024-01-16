@@ -11,7 +11,8 @@ import Combine
 
 class MockUserService: IUserService {
     func getAll(since id: Int?) -> AnyPublisher<[GithubUser], UserError> {
-        let path = Bundle(for: MockUserService.self).path(forResource: "mock_users", ofType: "json")
+        let source = id == Constants.UserData.idWithEmptyData ? "mock_empty_array" : "mock_users"
+        let path = Bundle(for: MockUserService.self).path(forResource: source, ofType: "json")
         
         guard let filePath = path,
               let dataFile = try? Data(contentsOf:  URL(filePath: filePath)) else {

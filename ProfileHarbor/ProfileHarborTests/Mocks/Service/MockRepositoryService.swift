@@ -10,12 +10,13 @@ import Combine
 @testable import ProfileHarbor
 
 class MockRepositoryService: IRepositoryService {
-    func getAll(by username: String) -> AnyPublisher<[GitHubRepository], RepositoryError> {
+    func getAll(by username: String, page: Int) -> AnyPublisher<[GitHubRepository], RepositoryError> {
         guard username == Constants.UserData.validUser else {
             return  Fail(error: RepositoryError.notFound)
                 .eraseToAnyPublisher()
         }
-        let path = Bundle(for: MockRepositoryService.self).path(forResource: "mock_repositories", ofType: "json")
+        let source = username == Constants.UserData.userWithEmpty ? "mock_empty_array" : "mock_repositories"
+        let path = Bundle(for: MockRepositoryService.self).path(forResource: source, ofType: "json")
         
         guard let filePath = path,
               let dataFile = try? Data(contentsOf:  URL(filePath: filePath)) else {

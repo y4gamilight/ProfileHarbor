@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9F49D1A62B56B9DD0065F646 /* WebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F49D1A52B56B9DD0065F646 /* WebVC.swift */; };
 		9F49D1A82B56BA040065F646 /* WebVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F49D1A72B56BA040065F646 /* WebVM.swift */; };
+		9F49D1AA2B56EF000065F646 /* mock_empty_array.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F49D1A92B56EF000065F646 /* mock_empty_array.json */; };
 		9F55F5EC2B53B8F500168DC0 /* AsyncOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F5EB2B53B8F500168DC0 /* AsyncOperator.swift */; };
 		9F55F5EE2B53B91100168DC0 /* LazyOperatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F5ED2B53B91100168DC0 /* LazyOperatorManager.swift */; };
 		9F55F5F02B53B9B400168DC0 /* LazyLoadUserAvatarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F5EF2B53B9B400168DC0 /* LazyLoadUserAvatarManager.swift */; };
@@ -101,6 +102,7 @@
 /* Begin PBXFileReference section */
 		9F49D1A52B56B9DD0065F646 /* WebVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebVC.swift; sourceTree = "<group>"; };
 		9F49D1A72B56BA040065F646 /* WebVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebVM.swift; sourceTree = "<group>"; };
+		9F49D1A92B56EF000065F646 /* mock_empty_array.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mock_empty_array.json; sourceTree = "<group>"; };
 		9F55F5EB2B53B8F500168DC0 /* AsyncOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperator.swift; sourceTree = "<group>"; };
 		9F55F5ED2B53B91100168DC0 /* LazyOperatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyOperatorManager.swift; sourceTree = "<group>"; };
 		9F55F5EF2B53B9B400168DC0 /* LazyLoadUserAvatarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyLoadUserAvatarManager.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 		9F61F4AF2B522985005F7809 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				9F49D1A92B56EF000065F646 /* mock_empty_array.json */,
 				9F6827C92B55A1310041AF6E /* mock_repositories.json */,
 				9F6827C42B5573140041AF6E /* mock_user.json */,
 				9F61F4B02B5229CF005F7809 /* mock_users.json */,
@@ -820,6 +823,7 @@
 				9F6827CA2B55A1310041AF6E /* mock_repositories.json in Resources */,
 				9F6827C52B5573140041AF6E /* mock_user.json in Resources */,
 				9F61F4B12B5229CF005F7809 /* mock_users.json in Resources */,
+				9F49D1AA2B56EF000065F646 /* mock_empty_array.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
