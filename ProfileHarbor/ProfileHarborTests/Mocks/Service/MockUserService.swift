@@ -16,6 +16,7 @@ class MockUserService: IUserService {
         guard let filePath = path,
               let dataFile = try? Data(contentsOf:  URL(filePath: filePath)) else {
             return Fail(error: UserError.errorServer)
+                .delay(for: 1.0, scheduler: RunLoop.main)
                 .eraseToAnyPublisher()
         }
         do {
@@ -25,10 +26,12 @@ class MockUserService: IUserService {
                     return items.map { GithubUser(id: $0.id, avatarUrl: $0.avatarUrl, userName: $0.login, fullName: $0.name ?? $0.login ,following: $0.following ?? 0, followers: $0.followers ?? 0)}
                 })
                 .mapError({ _ in UserError.errorServer })
+                .delay(for: 1.0, scheduler: RunLoop.main)
                 .eraseToAnyPublisher()
         } catch(let error) {
             debugPrint(error.localizedDescription)
             return Fail(error: UserError.errorServer)
+                .delay(for: 1.0, scheduler: RunLoop.main)
                 .eraseToAnyPublisher()
         }
     }
