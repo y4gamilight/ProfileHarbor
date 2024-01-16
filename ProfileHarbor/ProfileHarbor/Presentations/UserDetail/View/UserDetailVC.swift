@@ -13,6 +13,7 @@ class UserDetailVC: BaseVC<UserDetailVM> {
     @IBOutlet weak var tableView: UITableView!
     var dataSource: UserDetailDataSource!
     private var getDetailSubject = PassthroughSubject<Void, Never>()
+    private var openWebViewSubject = PassthroughSubject<URL?, Never>()
     private var cancelables = Set<AnyCancellable>()
     
     override func viewDidLoad() {
@@ -22,7 +23,7 @@ class UserDetailVC: BaseVC<UserDetailVM> {
     }
     
     override func bindEvent() {
-        let input = UserDetailVM.Input(getDetail: getDetailSubject.eraseToAnyPublisher())
+        let input = UserDetailVM.Input(getDetail: getDetailSubject.eraseToAnyPublisher(), openWebView: openWebViewSubject.eraseToAnyPublisher())
         let output = viewModel.transform(input: input)
         output.reloadUserSection
             .receive(on: RunLoop.main)
@@ -41,7 +42,9 @@ class UserDetailVC: BaseVC<UserDetailVM> {
     }
     
     override func bindData() {
-        
+        dataSource.onDidSelectRepository = {[weak self] url in
+            self?.openWebViewSubject.send(url)
+        }
     }
 
     override func configuration() {

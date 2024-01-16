@@ -34,6 +34,12 @@ class UserDetailVM: BaseVM {
                 self?.fetchAllRepos()
             }
             .store(in: &cancelables)
+        
+        input.openWebView
+            .sink { [weak self] url in
+                self?.coordinator.presentWebView(url)
+            }
+            .store(in: &cancelables)
         return Output(reloadUserSection: reloadUserSectionSubject.eraseToAnyPublisher(), reloadReposSection: reloadReposSectionSubject.eraseToAnyPublisher(), showError: showErrorSubject.eraseToAnyPublisher(), showLoading: showLoadingSubject.eraseToAnyPublisher())
     }
     
@@ -66,7 +72,7 @@ class UserDetailVM: BaseVM {
             .store(in: &cancelables)
     }
     
-    func loadRepos() -> AnyPublisher<[GitHubRepository], RepositoryError> {
+    private func loadRepos() -> AnyPublisher<[GitHubRepository], RepositoryError> {
         let publishers = CurrentValueSubject<Int, Never>(1)
         return publishers
             .flatMap({ index in
@@ -91,6 +97,7 @@ extension UserDetailVM {
     
     struct Input {
         let getDetail: AnyPublisher<Void, Never>
+        let openWebView: AnyPublisher<URL?, Never>
     }
     
     struct Output {
