@@ -16,6 +16,7 @@ class Coordinator {
     func finsih() {
         preconditionFailure("Method must be override")
     }
+    
     func addChild(_ coordinator: Coordinator) {
         coordinator.parent = self
         childs.append(coordinator)
@@ -33,7 +34,7 @@ class Coordinator {
     
     func removeAll() {
         childs.removeAll()
-    }
+    } 
 }
 
 

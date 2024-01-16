@@ -8,3 +8,4 @@
 "app_name" = "Profile Harbor";
 "text_ok" = "OK";
 "text_cancel" = "Cancel";
+"msg_error_invalid_url" = "URL is empty or invalid.";
