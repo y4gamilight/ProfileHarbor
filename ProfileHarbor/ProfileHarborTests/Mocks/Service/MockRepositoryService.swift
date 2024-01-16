@@ -16,7 +16,8 @@ class MockRepositoryService: IRepositoryService {
                 .delay(for: 1.0, scheduler: RunLoop.main)
                 .eraseToAnyPublisher()
         }
-        let path = Bundle(for: MockRepositoryService.self).path(forResource: "mock_repositories", ofType: "json")
+        let source = username == Constants.UserData.userWithEmpty ? "mock_empty_array" : "mock_repositories"
+        let path = Bundle(for: MockRepositoryService.self).path(forResource: source, ofType: "json")
         
         guard let filePath = path,
               let dataFile = try? Data(contentsOf:  URL(filePath: filePath)) else {
