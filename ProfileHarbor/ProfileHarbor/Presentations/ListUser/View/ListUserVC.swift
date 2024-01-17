@@ -43,7 +43,7 @@ final class ListUserVC: BaseVC<ListUserVM> {
         output.showError
             .receive(on: RunLoop.main)
             .sink {[weak self] message in
-                self?.showErorMessage(message)
+                self?.showErrorToastMessage(message)
             }
         
             .store(in: &cancelables)

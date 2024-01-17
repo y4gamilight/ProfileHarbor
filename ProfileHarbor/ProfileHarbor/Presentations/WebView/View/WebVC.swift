@@ -15,11 +15,17 @@ final class WebVC: BaseVC<WebVM> {
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var containerView: UIView!
     private lazy var webView: WKWebView = {
-        let webView = WKWebView(frame: containerView.bounds)
+        let webConfiguration = WKWebViewConfiguration()
+        let webView = WKWebView(frame: containerView.bounds, configuration: webConfiguration)
         webView.sizeToFit()
-        containerView.addSubview(webView)
+        webView.navigationDelegate = self
         return webView
     }()
+    
+    override func setupUI() {
+        containerView.layoutIfNeeded()
+        containerView.addSubview(webView)
+    }
     
     override func bindData() {
         let input = WebVM.Input(requestURL: requestURLSubject.eraseToAnyPublisher())
@@ -28,6 +34,7 @@ final class WebVC: BaseVC<WebVM> {
         output.loadURL
             .receive(on: RunLoop.main)
             .sink {[weak self] urlRequest in
+                self?.showLoading()
                 self?.webView.load(urlRequest)
             }
             .store(in: &cancelables)
@@ -39,5 +46,11 @@ final class WebVC: BaseVC<WebVM> {
     
     @IBAction func closeClicked(_ sender: Any) {
         self.dismiss(animated: true)
+    }
+}
+
+extension WebVC: WKNavigationDelegate, WKUIDelegate {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        hideLoading()
     }
 }

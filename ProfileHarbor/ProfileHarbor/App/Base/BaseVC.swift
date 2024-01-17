@@ -7,6 +7,7 @@
 
 import UIKit
 import ProgressHUD
+import Toast
 
 class BaseVC<ViewModel: BaseVM>: UIViewController {
     var viewModel: ViewModel!
@@ -46,6 +47,13 @@ class BaseVC<ViewModel: BaseVM>: UIViewController {
         let alertVC = UIAlertController(title: StringKey.appName, message: msg, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title:  StringKey.textCancel, style: .cancel))
         self.present(alertVC, animated: true)
+    }
+    
+    func showErrorToastMessage(_ msg: String) {
+        var errorStyle = ToastStyle()
+        errorStyle.messageColor = UIColor.white
+        errorStyle.backgroundColor = UIColor.red
+        view.makeToast(msg, position: .top, title: StringKey.appName, style: errorStyle, completion: nil)
     }
     
     func showLoading() {
