@@ -11,6 +11,8 @@ struct StringKey {
     static var appName: String { return localized("app_name") }
     static var textOk: String { return localized("text_ok") }
     static var textCancel: String { return localized("text_cancel") }
+    static var textNoData: String { return localized("text_no_data") }
+    static var textLoading: String { return localized("text_loading") }
     static var msgErrorInvalidURL: String { return localized("msg_error_invalid_url")}
     static var msgErrorUserInvalid: String { return localized("msg_error_user_invalid")}
     static var msgErrorServerTrouble: String { return localized("msg_error_server_trouble")}

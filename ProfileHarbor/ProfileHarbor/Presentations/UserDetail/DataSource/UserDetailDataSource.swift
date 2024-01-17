@@ -13,13 +13,20 @@ final class UserDetailDataSource: NSObject {
         case user
         case repository
     }
-    var repositories: [RepositoryCellModel] = []
+    var repositories: [RepositoryCellModel] = [] {
+        didSet {
+            isFetched = true
+        }
+    }
+    
+    private var isFetched: Bool = false
     var userInfo = UserInfoCellModel()
     var onDidSelectRepository: ((URL?) -> Void)?
     
     func registerCell(_ tableView: UITableView) {
         tableView.registerCell(of: UserInfoViewCell.self)
         tableView.registerCell(of: RepositoryViewCell.self)
+        tableView.registerCell(of: RepositoryStatusCell.self)
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -31,8 +38,12 @@ extension UserDetailDataSource: UITableViewDelegate, UITableViewDataSource {
         return 2
     }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return section == Section.repository.rawValue ? "List repositories" : nil
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == Section.user.rawValue ? 1 : repositories.count
+        return section == Section.user.rawValue ? 1 : (repositories.isEmpty ? 1 : repositories.count)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -43,10 +54,17 @@ extension UserDetailDataSource: UITableViewDelegate, UITableViewDataSource {
             cell.model = userInfo
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: RepositoryViewCell.identifier) as!
-            RepositoryViewCell
-            cell.model = repositories[row]
-            return cell
+            if repositories.isEmpty {
+                let cell = tableView.dequeueReusableCell(withIdentifier: RepositoryStatusCell.identifier) as!
+                RepositoryStatusCell
+                cell.updateStatus(isFetched)
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: RepositoryViewCell.identifier) as!
+                RepositoryViewCell
+                cell.model = repositories[row]
+                return cell
+            }
         }
     }
     
@@ -54,5 +72,17 @@ extension UserDetailDataSource: UITableViewDelegate, UITableViewDataSource {
         guard indexPath.section == Section.repository.rawValue else { return }
         let item = repositories[indexPath.row]
         onDidSelectRepository?(item.link)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.00001
     }
 }
