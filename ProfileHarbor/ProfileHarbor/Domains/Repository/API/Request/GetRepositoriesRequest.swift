@@ -24,7 +24,7 @@ struct GetRepositoriesRequest: Request {
  
     init(username: String, page: Int = 1, pageSize: Int = Constants.Pagination.maxPageSize) {
         path = "users/\(username)/repos"
-        var dict = [
+        let dict = [
             Key.perPage.rawValue : pageSize,
             Key.page.rawValue : page,
         ]
