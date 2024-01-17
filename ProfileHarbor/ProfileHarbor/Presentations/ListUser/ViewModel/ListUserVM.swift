@@ -54,9 +54,16 @@ final class ListUserVM: BaseVM {
         showLoadingSubject.send(true)
         self.userSerivce.getAll(since: lastId)
             .sink {[weak self] completion in
-                if case .failure = completion {
+                if case .failure(let error) = completion {
+                    switch error {
+                    case .notFound:
+                        self?.showErrorSubject.send(StringKey.msgErrorUserInvalid)
+                    case .tooManyRequest:
+                        self?.showErrorSubject.send(StringKey.msgErrorTooManyRequest)
+                    case .errorServer:
+                        self?.showErrorSubject.send(StringKey.msgErrorTooManyRequest)
+                    }
                     self?.showLoadingSubject.send(false)
-                    self?.showErrorSubject.send("Co Error")
                     self?.isFetching = false
                 }
             } receiveValue: {[weak self] users in
