@@ -91,11 +91,15 @@
                                             <action selector="closeClicked:" destination="zLF-OE-joT" eventType="touchUpInside" id="yIu-Eo-rRp"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t59-mm-eQk">
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t59-mm-eQk">
                                         <rect key="frame" x="0.0" y="54" width="393" height="705"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="t59-mm-eQk" firstAttribute="width" secondItem="cSe-hU-vWD" secondAttribute="width" id="NVm-k9-m4a"/>
+                                    <constraint firstItem="t59-mm-eQk" firstAttribute="height" secondItem="cSe-hU-vWD" secondAttribute="height" constant="-54" id="U5U-Mi-p7c"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2oj-Ez-5hu"/>
