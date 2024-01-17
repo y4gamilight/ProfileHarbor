@@ -16,7 +16,9 @@ struct StringKey {
     static var msgErrorInvalidURL: String { return localized("msg_error_invalid_url")}
     static var msgErrorUserInvalid: String { return localized("msg_error_user_invalid")}
     static var msgErrorServerTrouble: String { return localized("msg_error_server_trouble")}
+    static var msgErrorInternetOffline: String { return localized("msg_error_internet_offline")}
     static var msgErrorTooManyRequest: String { return localized("msg_error_too_many_request")}
+    static var textRefresh: String { return localized("text_refresh") }
     
     static func textNumUsers(_ nums: Int) -> String {
         return "\(localized("text_users")) \(nums)"

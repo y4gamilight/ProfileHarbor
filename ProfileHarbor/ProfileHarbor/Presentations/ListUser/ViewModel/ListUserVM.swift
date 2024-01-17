@@ -18,6 +18,7 @@ final class ListUserVM: BaseVM {
     private var cancelables = Set<AnyCancellable>()
     private var appendItemsSubject = PassthroughSubject<[UserViewModel], Never>()
     private var updateItemsSubject = PassthroughSubject<[UserViewModel], Never>()
+    private var showIllustrationSubject = PassthroughSubject<(Bool, CustomIllustrationView.Kind), Never>()
     private let userSerivce: IUserService
     private var isFetching: Bool = false
     private var lastId: Int? = nil
@@ -44,6 +45,7 @@ final class ListUserVM: BaseVM {
             .store(in: &cancelables)
         return Output(updateItems: updateItemsSubject.eraseToAnyPublisher(),
                       appendItems: appendItemsSubject.eraseToAnyPublisher(),
+                      showIllustration: showIllustrationSubject.eraseToAnyPublisher(),
                       showError: showErrorSubject.eraseToAnyPublisher(),
                       showLoading: showLoadingSubject.eraseToAnyPublisher())
     }
@@ -63,19 +65,18 @@ final class ListUserVM: BaseVM {
         self.userSerivce.getAll(since: lastId)
             .sink {[weak self] completion in
                 if case .failure(let error) = completion, lastId == self?.lastId {
-                    switch error {
-                    case .notFound:
-                        self?.showErrorSubject.send(StringKey.msgErrorUserInvalid)
-                    case .tooManyRequest:
-                        self?.showErrorSubject.send(StringKey.msgErrorTooManyRequest)
-                    case .errorServer:
-                        self?.showErrorSubject.send(StringKey.msgErrorTooManyRequest)
+                    if error == .noInternetNetwork {
+                        self?.showIllustrationSubject.send((true, CustomIllustrationView.Kind.noNetwork))
+                    } else {
+                        self?.showIllustrationSubject.send((false, CustomIllustrationView.Kind.none))
                     }
+                    self?.showErrorSubject.send(error.msgError)
                     self?.showLoadingSubject.send(false)
                     self?.isFetching = false
                 }
             } receiveValue: {[weak self] users in
                 if lastId != self?.lastId { return }
+                self?.showIllustrationSubject.send((false, CustomIllustrationView.Kind.none))
                 self?.isFetching = false
                 self?.handleRespone(users)
             }
@@ -104,6 +105,7 @@ extension ListUserVM {
     struct Output {
         let updateItems: AnyPublisher<[UserViewModel], Never>
         let appendItems: AnyPublisher<[UserViewModel], Never>
+        let showIllustration: AnyPublisher<(Bool, CustomIllustrationView.Kind), Never>
         let showError: AnyPublisher<String, Never>
         let showLoading: AnyPublisher<Bool, Never>
     }

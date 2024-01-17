@@ -27,6 +27,8 @@ class UserService: IUserService {
                     return UserError.notFound
                 case .tooManyRequest:
                     return UserError.tooManyRequest
+                case .noInternetNetwork:
+                    return UserError.noInternetNetwork
                 default:
                     return UserError.errorServer
                 }
@@ -46,6 +48,8 @@ class UserService: IUserService {
                     return UserError.notFound
                 case .tooManyRequest:
                     return UserError.tooManyRequest
+                case .noInternetNetwork:
+                    return UserError.noInternetNetwork
                 default:
                     return UserError.errorServer
                 }

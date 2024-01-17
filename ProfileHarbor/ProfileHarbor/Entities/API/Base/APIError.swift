@@ -24,6 +24,7 @@ public enum APIError: LocalizedError, Equatable {
     case error5xx(_ code: Int)
     case decodingError
     case urlSessionFailed(_ error: URLError)
+    case noInternetNetwork
     case unknownError
     
     init(statusCode: Int) {
@@ -50,6 +51,8 @@ public enum APIError: LocalizedError, Equatable {
             self = .serverUnavailable
         case APIStatusCode.gatewayTimeout.rawValue:
             self = .gatewayTimeout
+        case APIStatusCode.noInternetNetwork.rawValue:
+            self = .noInternetNetwork
         default:
             if statusCode < 500 && statusCode >= 400 {
                 self = .error4xx(statusCode)
@@ -79,4 +82,5 @@ public enum APIStatusCode: Int {
     case badGateway = 502
     case serverUnavailable = 503
     case gatewayTimeout = 504
+    case noInternetNetwork = -1009
 }
