@@ -38,7 +38,7 @@ class MockUserService: IUserService {
     }
     
     func getDetailByUserName(_ username: String) -> AnyPublisher<GithubUser, UserError> {
-        guard username == Constants.UserData.validUser else {
+        guard username != Constants.UserData.invalidUser else {
             return Fail(error: UserError.notFound)
                 .delay(for: 1.0, scheduler: RunLoop.main)
                 .eraseToAnyPublisher()
