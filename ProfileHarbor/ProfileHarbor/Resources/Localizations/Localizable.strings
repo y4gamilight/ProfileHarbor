@@ -12,3 +12,4 @@
 "msg_error_user_invalid" = "Has a problem, can't get data from the username.";
 "msg_error_server_trouble" = "The server has an issue, please contact to get support.";
 "msg_error_too_many_request" = "You have run out of requests for the day.";
+"text_users" = "Users";
