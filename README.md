@@ -1,8 +1,8 @@
 # PROFILE HARBOR PROJECT
 ### Information
-> Author: Le Tan Thanh
-> Email: thanhlt.ios.36@gmail.com
-> Description: App demo about using Github API. App will try to request fetching users and show their repositories.
+- Author: Le Tan Thanh
+- Email: thanhlt.ios.36@gmail.com
+- Description: App demo about using Github API. App will try to request fetching users and show their repositories.
 
 ### 1.Prerequisite
 > Mac OS Ventura or later
