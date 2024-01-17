@@ -15,7 +15,6 @@ class UserDetailVC: BaseVC<UserDetailVM> {
     private var getDetailSubject = PassthroughSubject<Void, Never>()
     private var openWebViewSubject = PassthroughSubject<URL?, Never>()
     private var cancelables = Set<AnyCancellable>()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
