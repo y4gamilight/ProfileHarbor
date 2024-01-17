@@ -12,6 +12,9 @@ struct StringKey {
     static var textOk: String { return localized("text_ok") }
     static var textCancel: String { return localized("text_cancel") }
     static var msgErrorInvalidURL: String { return localized("msg_error_invalid_url")}
+    static var msgErrorUserInvalid: String { return localized("msg_error_user_invalid")}
+    static var msgErrorServerTrouble: String { return localized("msg_error_server_trouble")}
+    static var msgErrorTooManyRequest: String { return localized("msg_error_too_many_request")}
 }
 
 extension StringKey {

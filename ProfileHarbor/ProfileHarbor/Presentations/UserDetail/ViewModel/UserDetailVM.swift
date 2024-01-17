@@ -17,9 +17,9 @@ class UserDetailVM: BaseVM {
     private var cancelables = Set<AnyCancellable>()
     
     var coordinator: AppCoordinator!
+    var username: String
     private var userService: IUserService
     private var repoService: IRepositoryService
-    private var username: String
     private var currentIndex: Int = 1
     init(username: String, userService: IUserService, repoService: IRepositoryService) {
         self.username = username
@@ -48,7 +48,15 @@ class UserDetailVM: BaseVM {
         showLoadingSubject.send(true)
         userService.getDetailByUserName(username)
             .sink {[weak self] completion in
-                if case .failure = completion {
+                if case .failure(let error) = completion {
+                    switch error {
+                    case .notFound:
+                        self?.showErrorSubject.send(StringKey.msgErrorUserInvalid)
+                    case .tooManyRequest:
+                        self?.showErrorSubject.send(StringKey.msgErrorTooManyRequest)
+                    case .errorServer:
+                        self?.showErrorSubject.send(StringKey.msgErrorTooManyRequest)
+                    }
                     self?.showLoadingSubject.send(false)
                 }
             } receiveValue: {[weak self] user in
