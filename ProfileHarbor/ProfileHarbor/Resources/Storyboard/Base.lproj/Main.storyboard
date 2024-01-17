@@ -21,17 +21,26 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bfI-2y-o6h" customClass="CustomIllustrationView" customModule="ProfileHarbor" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="bfI-2y-o6h" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="3Wd-Wg-usJ"/>
                             <constraint firstItem="Syy-RH-T1J" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6Pj-oo-teo"/>
                             <constraint firstItem="Syy-RH-T1J" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="NcE-5q-yc2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Syy-RH-T1J" secondAttribute="bottom" id="aP6-86-gdI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bfI-2y-o6h" secondAttribute="bottom" id="f7X-68-OhX"/>
+                            <constraint firstItem="bfI-2y-o6h" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kdY-ED-3jN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Syy-RH-T1J" secondAttribute="trailing" id="p6N-ic-qgN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bfI-2y-o6h" secondAttribute="trailing" id="wOI-Wp-jLi"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="statusView" destination="bfI-2y-o6h" id="5DN-in-28t"/>
                         <outlet property="usersTableView" destination="Syy-RH-T1J" id="n3e-NI-kEi"/>
                     </connections>
                 </viewController>

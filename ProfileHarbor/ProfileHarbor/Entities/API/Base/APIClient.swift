@@ -59,6 +59,8 @@ struct APIClient {
 extension APIClient {
     fileprivate func handleError(_ error: Error) -> APIError {
         switch error {
+        case let nsError as NSError where nsError.code == APIStatusCode.noInternetNetwork.rawValue:
+            return .noInternetNetwork
         case is Swift.DecodingError:
             return .decodingError
         case let urlError as URLError:

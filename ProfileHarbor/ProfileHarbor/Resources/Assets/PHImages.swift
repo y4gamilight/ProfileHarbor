@@ -12,5 +12,7 @@ struct PHImages {
         static let icAvaPlaceholder = "ic_ava_placeholder"
         static let imgNoData = "illustration_no_data"
         static let imgLoadingData = "illustration_loading_data"
+        static let imgNoNetwork = "illustration_no_connection"
+        
     }
 }
