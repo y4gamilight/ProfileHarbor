@@ -10,6 +10,7 @@ import UIKit
 class ListUserDataSource: NSObject {
     
     var onDidSelectItem: ((String) -> Void)?
+    var onBindNumOfUser: ((Int) -> Void)?
     var onLoadMore: (() -> Void)?
     var onReloadList: (() -> Void)?
     
@@ -32,10 +33,13 @@ class ListUserDataSource: NSObject {
     func appendItems(_ items: [UserViewModel]) {
         canLoadMore = items.count >= Constants.Pagination.maxPageSize
         self.items.append(contentsOf: items)
+        onBindNumOfUser?(self.items.count)
     }
     
     func updateItems(_ items: [UserViewModel]) {
+        canLoadMore = items.count >= Constants.Pagination.maxPageSize
         self.items = items
+        onBindNumOfUser?(self.items.count)
     }
     
     func stopLoadImages() {
@@ -81,6 +85,7 @@ extension ListUserDataSource: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row >= items.count { return }
         self.lazyLoadManager.slowDownImageDownloadTaskfor(items[indexPath.row])
     }
     
@@ -91,6 +96,7 @@ extension ListUserDataSource: UITableViewDelegate, UITableViewDataSource {
         
         // Load more when user scrolls to the top
         if canLoadMore && contentHeight <= offsetY + height {
+            canLoadMore = false
             self.onLoadMore?()
         }
     }

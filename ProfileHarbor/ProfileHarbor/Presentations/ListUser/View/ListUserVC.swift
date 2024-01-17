@@ -21,6 +21,13 @@ final class ListUserVC: BaseVC<ListUserVM> {
         super.viewDidLoad()
     }
     
+    override func setupUI() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
+        usersTableView.refreshControl = refreshControl
+        
+    }
+    
     override func bindData() {
         let input = ListUserVM.Input(getUsers: getUsersSubject.eraseToAnyPublisher(), loadMore: loadMoreSubject.eraseToAnyPublisher(), selectedUser: selectedUserSubject.eraseToAnyPublisher())
         
@@ -46,6 +53,16 @@ final class ListUserVC: BaseVC<ListUserVM> {
             .sink {[weak self] items in
                 self?.dataSource.appendItems(items)
                 self?.usersTableView.reloadData()
+                self?.usersTableView.refreshControl?.endRefreshing()
+            }
+            .store(in: &cancelables)
+        
+        output.updateItems
+            .receive(on: RunLoop.main)
+            .sink {[weak self] items in
+                self?.dataSource.updateItems(items)
+                self?.usersTableView.reloadData()
+                self?.usersTableView.refreshControl?.endRefreshing()
             }
             .store(in: &cancelables)
     }
@@ -58,12 +75,21 @@ final class ListUserVC: BaseVC<ListUserVM> {
         dataSource.onDidSelectItem = {[weak self] username in
             self?.selectedUserSubject.send(username)
         }
+        
+        dataSource.onBindNumOfUser = {[weak self] num in
+            self?.title = StringKey.textNumUsers(num)
+        }
     }
     
     override func configuration() {
         usersTableView.dataSource = dataSource
         usersTableView.delegate = dataSource
         dataSource.registerCell(usersTableView)
+        getUsersSubject.send(())
+    }
+    
+    @objc
+    private func pullToRefresh() {
         getUsersSubject.send(())
     }
 }

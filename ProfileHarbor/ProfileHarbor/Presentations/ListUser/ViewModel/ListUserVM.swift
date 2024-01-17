@@ -17,6 +17,7 @@ final class ListUserVM: BaseVM {
     var showLoadingSubject = PassthroughSubject<Bool, Never>()
     private var cancelables = Set<AnyCancellable>()
     private var appendItemsSubject = PassthroughSubject<[UserViewModel], Never>()
+    private var updateItemsSubject = PassthroughSubject<[UserViewModel], Never>()
     private let userSerivce: IUserService
     private var isFetching: Bool = false
     private var lastId: Int? = nil
@@ -28,7 +29,7 @@ final class ListUserVM: BaseVM {
     func transform(input: Input) -> Output {
         input.getUsers
             .sink {[weak self] _ in
-                self?.fetchUsers()
+                self?.refreshList()
             }
             .store(in: &cancelables)
         input.loadMore
@@ -41,9 +42,15 @@ final class ListUserVM: BaseVM {
                 self?.coordinator.navigateToUserDetail(username)
             }
             .store(in: &cancelables)
-        return Output(appendItems: appendItemsSubject.eraseToAnyPublisher(),
+        return Output(updateItems: updateItemsSubject.eraseToAnyPublisher(),
+                      appendItems: appendItemsSubject.eraseToAnyPublisher(),
                       showError: showErrorSubject.eraseToAnyPublisher(),
                       showLoading: showLoadingSubject.eraseToAnyPublisher())
+    }
+    private func refreshList() {
+        isFetching = false
+        lastId = nil
+        fetchUsers()
     }
     
     private func fetchUsers() {
@@ -52,9 +59,10 @@ final class ListUserVM: BaseVM {
         }
         isFetching = true
         showLoadingSubject.send(true)
+        let lastId = self.lastId
         self.userSerivce.getAll(since: lastId)
             .sink {[weak self] completion in
-                if case .failure(let error) = completion {
+                if case .failure(let error) = completion, lastId == self?.lastId {
                     switch error {
                     case .notFound:
                         self?.showErrorSubject.send(StringKey.msgErrorUserInvalid)
@@ -67,6 +75,7 @@ final class ListUserVM: BaseVM {
                     self?.isFetching = false
                 }
             } receiveValue: {[weak self] users in
+                if lastId != self?.lastId { return }
                 self?.isFetching = false
                 self?.handleRespone(users)
             }
@@ -75,8 +84,12 @@ final class ListUserVM: BaseVM {
     
     private func handleRespone(_ users: [GithubUser]) {
         let items = users.map { UserViewModel(uid: $0.id, fullName: $0.fullName, userName: $0.userName, avatarURL: $0.avatarUrl)}
+        if lastId != nil {
+            appendItemsSubject.send(items)
+        } else {
+            updateItemsSubject.send(items)
+        }
         lastId = users.last?.id
-        appendItemsSubject.send(items)
         showLoadingSubject.send(false)
     }
 }
@@ -89,6 +102,7 @@ extension ListUserVM {
     }
     
     struct Output {
+        let updateItems: AnyPublisher<[UserViewModel], Never>
         let appendItems: AnyPublisher<[UserViewModel], Never>
         let showError: AnyPublisher<String, Never>
         let showLoading: AnyPublisher<Bool, Never>
