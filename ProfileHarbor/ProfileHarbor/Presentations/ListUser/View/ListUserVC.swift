@@ -10,6 +10,7 @@ import Combine
 
 final class ListUserVC: BaseVC<ListUserVM> {
     @IBOutlet weak var usersTableView: UITableView!
+    @IBOutlet weak var statusView: CustomIllustrationView!
     var dataSource: ListUserDataSource!
     
     private var cancelables = Set<AnyCancellable>()
@@ -47,6 +48,15 @@ final class ListUserVC: BaseVC<ListUserVM> {
             }
         
             .store(in: &cancelables)
+        output.showIllustration
+            .receive(on: RunLoop.main)
+            .sink {[weak self] isShow, kind in
+                self?.statusView.isHidden = !isShow
+                self?.statusView.updateUI(kind)
+                self?.title = ""
+            }
+        
+            .store(in: &cancelables)
         
         output.appendItems
             .receive(on: RunLoop.main)
@@ -78,6 +88,10 @@ final class ListUserVC: BaseVC<ListUserVM> {
         
         dataSource.onBindNumOfUser = {[weak self] num in
             self?.title = StringKey.textNumUsers(num)
+        }
+        
+        statusView.onAction = {[weak self] in
+            self?.getUsersSubject.send(())
         }
     }
     

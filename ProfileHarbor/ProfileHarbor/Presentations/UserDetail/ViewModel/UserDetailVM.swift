@@ -49,14 +49,7 @@ class UserDetailVM: BaseVM {
         userService.getDetailByUserName(username)
             .sink {[weak self] completion in
                 if case .failure(let error) = completion {
-                    switch error {
-                    case .notFound:
-                        self?.showErrorSubject.send(StringKey.msgErrorUserInvalid)
-                    case .tooManyRequest:
-                        self?.showErrorSubject.send(StringKey.msgErrorTooManyRequest)
-                    case .errorServer:
-                        self?.showErrorSubject.send(StringKey.msgErrorTooManyRequest)
-                    }
+                    self?.showErrorSubject.send(error.msgError)
                     self?.showLoadingSubject.send(false)
                 }
             } receiveValue: {[weak self] user in

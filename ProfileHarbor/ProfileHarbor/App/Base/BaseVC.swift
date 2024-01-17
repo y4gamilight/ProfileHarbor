@@ -53,7 +53,7 @@ class BaseVC<ViewModel: BaseVM>: UIViewController {
         var errorStyle = ToastStyle()
         errorStyle.messageColor = UIColor.white
         errorStyle.backgroundColor = UIColor.red
-        view.makeToast(msg, position: .top, title: StringKey.appName, style: errorStyle, completion: nil)
+        view.makeToast(msg, position: .top, style: errorStyle, completion: nil)
     }
     
     func showLoading() {
